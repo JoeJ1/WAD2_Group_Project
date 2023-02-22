@@ -9,4 +9,7 @@ Simple chatrooms website for University of Glasgow students and staff, built usi
 * Users should be able to set up a new chat page
 * One user can be the owner and/or member of several chats
 * Users should be able to view and download files
-* Files should have expiry dates attached after which they are no longer accessible
+* Files should have expiry dates attached after which they are no longer accessible 
+
+# Entity Relationship Diagram
+![ER Diagram](./ERD.svg)
