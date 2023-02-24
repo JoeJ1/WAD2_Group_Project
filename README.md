@@ -5,6 +5,7 @@ Make Sure you pull before you commit anything
 * ONUR
 * LEWIS
 * David
+* Reuben
 
 ## Requirements
 * User authentication

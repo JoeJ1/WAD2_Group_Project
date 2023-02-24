@@ -1,6 +1,6 @@
 import uuid
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User as DjangoUser
 
 USERNAME_LEN = 30
 DISPLAY_NAME_LEN = 50
@@ -9,7 +9,7 @@ CHAT_DESCRIPTION_LEN = 240
 
 class User(models.Model):
     username = models.CharField(max_length=30, unique=True, default=User.username)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(DjangoUser, on_delete=models.CASCADE)
     display_name = models.CharField(max_length=50)
 
     def __str__(self):
@@ -19,7 +19,7 @@ class Chat(models.Model):
     name = models.CharField(max_length=50, unique=True)
     description = models.CharField(max_length=240)
     users = models.ManyToManyField(User)
-    owner = models.UUIDField(default=uuid.uuid4)
+    owner = models.ForeignKey(User)
 
     def __str__(self):
         return self.name
