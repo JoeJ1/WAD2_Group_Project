@@ -4,6 +4,7 @@ Make Sure you pull before you commit anything
 
 * ONUR
 * LEWIS
+* David
 
 ## Requirements
 * User authentication
@@ -18,3 +19,4 @@ Make Sure you pull before you commit anything
 
 # Entity Relationship Diagram
 ![ER Diagram](./ERD.svg)
+
