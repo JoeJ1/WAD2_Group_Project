@@ -19,7 +19,7 @@ class Chat(models.Model):
     name = models.CharField(max_length=50, unique=True)
     description = models.CharField(max_length=240)
     users = models.ManyToManyField(User)
-    owner = models.UUIDField(default=uuid.uuid4)
+    owner = models.ForeignKey(User)
 
     def __str__(self):
         return self.name
