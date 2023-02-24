@@ -13,3 +13,5 @@ Simple chatrooms website for University of Glasgow students and staff, built usi
 
 # Entity Relationship Diagram
 ![ER Diagram](./ERD.svg)
+
+# i changed it
