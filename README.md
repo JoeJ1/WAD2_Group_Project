@@ -3,6 +3,8 @@ Simple chatrooms website for University of Glasgow students and staff, built usi
 Make Sure you pull before you commit anything
 
 * ONUR
+* LEWIS
+* David
 
 ## Requirements
 * User authentication
@@ -17,3 +19,4 @@ Make Sure you pull before you commit anything
 
 # Entity Relationship Diagram
 ![ER Diagram](./ERD.svg)
+
