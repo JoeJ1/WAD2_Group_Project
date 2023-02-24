@@ -1,5 +1,9 @@
 # MyChatGLA
 Simple chatrooms website for University of Glasgow students and staff, built using Django.
+Make Sure you pull before you commit anything
+
+* ONUR
+
 ## Requirements
 * User authentication
 * User authentication should also be available via external API e.g. Shibboleth, Google, Microsoft
