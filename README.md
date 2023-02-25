@@ -2,6 +2,8 @@
 Simple chatrooms website for University of Glasgow students and staff, built using Django.
 Make Sure you pull before you commit anything
 
+## MAKE SURE TO RUN `PIP INSTALL -r requirements.txt`
+
 * ONUR
 * LEWIS
 * David
