@@ -1,0 +1,12 @@
+:root{
+    --main-col-dark:#6e8fc8;
+    --main-col-light:#91b1f7;
+    --light-shadow-col:#7fa4e6;
+    --dark-shadow-col:#5e7aaa;
+    --text-color:#ffffff;
+}
+
+.card.bg-dark{
+    background-color: var(--main-col-dark); !important;
+    border-radius: 1rem;
+}
