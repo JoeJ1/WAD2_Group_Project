@@ -9,23 +9,19 @@ def chat(request):
     pass
 
 
-def Login(request):
+def login(request):
+    return render(request, "chat/login.html", context={})
+
+
+def main_page(request):
     pass
 
 
-def MainPage(request):
+def profile(request):
     pass
 
 
-def MyChatGLA(request):
-    pass
-
-
-def Profile(request):
-    pass
-
-
-def SignUp(request):
+def sign_up(request):
     registered = False
 
     if request.method == 'POST':

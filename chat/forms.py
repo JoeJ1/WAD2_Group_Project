@@ -1,10 +1,10 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from rango.models import UserProfile
+from chat.models import UserProfile
 
 
-class UserForm(forms.modelForm):
+class UserForm(forms.ModelForm):
     password = forms.CharField(widget = forms.PasswordInput)
 
     class Meta:
@@ -12,7 +12,7 @@ class UserForm(forms.modelForm):
         fields = ('username','password')
 
 
-class UserProfileForm(forms.modelForm):
+class UserProfileForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
