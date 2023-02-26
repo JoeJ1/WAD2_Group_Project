@@ -1,0 +1,47 @@
+.card{
+    background-color: var(--main-col-dark);
+    border: none;
+    border-radius: 2rem;
+    box-shadow:  8px 8px 30px hsla(120,0%,50%,0.5),
+                 -8px -8px 30px hsla(120,0%,100%,0.5);
+}
+
+.input-group {
+ position: relative;
+  
+}
+
+.input {
+    border: none;
+    border-radius:1rem;
+    background: var(--main-color);
+    box-shadow: inset 5px 5px 14px var(--dark-shadow-col),
+                inset -5px -5px 14px var(--light-shadow-col);
+    background: none;
+    padding: 1rem;
+    font-size: 1rem;
+    color: var(--text-col);
+    margin: 0.2rem;
+}
+
+.user-label {
+    position: absolute;
+    color: var(--text-color);
+    pointer-events: none;
+    transform: translateY(1rem);
+    transition: 150ms cubic-bezier(0.4,0,0.2,1);
+    left: 1rem;
+}
+
+.input:focus, input:valid {
+ outline: none;
+  background: var(--main-color);
+box-shadow: inset 5px 5px 29px var(--dark-shadow-col),
+            inset -5px -5px 29px var(--light-shadow-col);
+}
+
+.input:focus ~ label, input:valid ~ label {
+ transform: translateY(-45%) scale(0.9);
+ background: none;
+ padding: 0.2em;
+}

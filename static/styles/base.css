@@ -5,8 +5,3 @@
     --dark-shadow-col:#5e7aaa;
     --text-color:#ffffff;
 }
-
-.card.bg-dark{
-    background-color: var(--main-col-dark); !important;
-    border-radius: 1rem;
-}
