@@ -1,127 +1,100 @@
-.card {
-  width: 17rem;
-  height: 20rem;
-  padding: 0 15px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: var(--main-col-dark);
-  border-radius: 30px;
- box-shadow:  8px 8px 30px hsla(120,0%,50%,0.5),
-             -8px -8px 30px hsla(120,0%,100%,0.5);
-  position: absolute;
-  left:40%;
-  top:10%;
+.container {
+    padding:1rem;
+    vertical-align: middle;
+    margin-top:2rem;
 }
 
-.card > * {
-  margin: 0;
+.card {
+    max-width:330px;
+    height: 25rem;
+    padding: 0 1rem;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--main-col);
+    border-radius: 2rem;
+    box-shadow:  8px 8px 30px hsla(120,0%,50%,0.5),
+             -8px -8px 30px hsla(120,0%,100%,0.5);
 }
 
 .cardtitle {
-  font-size: 23px;
-  font-weight: 900;
-  color: var(--text-col);
+    font-size: 2rem;
+    font-weight: 900;
+    margin:0.5rem;
+    color: var(--text-col);
 }
 
-.sign-up:hover {
-  opacity: 0.8;
-} 
 .input-group {
- position: relative;
- margin:0.5rem;
-  
+    margin:0.5rem;
 }
 
 .input {
- border: none;
-  width: 100%;
-border-radius: 14px;
-background: var(--main-col);
-box-shadow: inset 5px 5px 14px var(--dark-shadow-col),
-            inset -5px -5px 14px var(--light-shadow-col);
- background: none;
- padding: 1rem;
- font-size: 1rem;
- color: var(--text-col);
-  margin: 0.2rem;
+    border: none;
+    width: 100%;
+    border-radius: 14px;
+    background: var(--main-col);
+    box-shadow: inset 5px 5px 14px var(--dark-shadow-col),
+                inset -5px -5px 14px var(--light-shadow-col);
+    padding: 1rem;
+    color: var(--text-col);
+    margin: 0.2rem;
 }
 
 .user-label {
- position: absolute;
- left: 20px;
- top: 5px;
- color: var(--text-col);
- pointer-events: none;
- transform: translateY(1rem);
- transition: 150ms cubic-bezier(0.4,0,0.2,1);
+    position: absolute;
+    left: 1rem;
+    top: 0.2rem;
+    color: var(--text-col);
+    pointer-events: none;
+    transform: translateY(1rem);
+    transition: 150ms cubic-bezier(0.4,0,0.2,1);
 }
 
 .input:focus, input:valid {
- outline: none;
-  background: var(--main-col);
-box-shadow: inset 5px 5px 29px var(--dark-shadow-col),
+    outline: none;
+    background: var(--main-col);
+    box-shadow: inset 5px 5px 29px var(--dark-shadow-col),
             inset -5px -5px 29px var(--light-shadow-col);
 }
 
 .input:focus ~ label, input:valid ~ label {
- transform: translateY(-45%) scale(0.9);
- background: none;
- padding: 0.2em;
+    transform: translateY(-45%) scale(0.9);
+    background: none;
+    padding: 0.2em;
 }
 
 button {
-  border-radius: 10%;
-  border-radius: 14px;
-background: var(--main-col);
-box-shadow:  6px 6px 12px var(--dark-shadow-col),
-             -6px -6px 12px var(--light-shadow-col);
-  border: none;
-  color: var(--text-col);
-  padding: 10px;
-  width:200px;
-  font-size: 20px;
-  transition: 150ms;
+    border-radius: 1rem;
+    background: var(--main-col);
+    box-shadow:  6px 6px 12px var(--dark-shadow-col),
+                -6px -6px 12px var(--light-shadow-col);
+    border: none;
+    color: var(--text-col);
+    padding: 1rem;
+    width:100%;
+    font-size: 1.2rem;
+    transition: 150ms;
 }
 
 button:hover {
-  background-color: var(--main-color-light);
-box-shadow:  10px 10px 15px var(--dark-shadow-col),
+    background-color: var(--main-col-light);
+    box-shadow:  10px 10px 15px var(--dark-shadow-col),
              -10px -10px 15px var(--light-shadow-col);
-  transition: box-shadow 150ms;
-}
-
-button:hover span {
-  color: #fff;
+    transition: box-shadow 150ms;
 }
 
 button:active {
-  background-color: var(--main-col);
-box-shadow:  none;
-  transition: box-shadow 10ms;
+    background-color: var(--main-col);
+    box-shadow:  none;
+    border: none;
+    transition: box-shadow 10ms;
 }
 
-div span.text {
+div span.login-text{
   text-align: center;
   color: var(--text-col);
-  font-size:13px;
 }
-div span a{
-  color: #55aaff;
-  text-decoration: none;
-}
-div span a:visited{
-  color: #55aaff;
-  text-decoration: none;
-}
-div span a:active{
-  color: #55aaff;
-  text-decoration: none;
-}
-div span a:link{
-  div span a:visited{
-  color: #55aaff;
+
+a, a:visited, a:active{
+  color: #4cefff;
   text-decoration: none;
 }
