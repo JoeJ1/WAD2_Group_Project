@@ -10,19 +10,21 @@
 {% endblock %}
 
 {% block body_block %}
+<form id="user_form" method="post" action="{% url 'chat:signup' %}" enctype="multipart/form-data">
+{% csrf_token %}
 <div class="container text-center">
     <div class="card form-signin m-auto align-middle">
         <span class="cardtitle">MyChatGLA</span>
         <div class="input-group">
-            <input required="" type="text" name="text" autocomplete="off" class="input">
+            <input required="" type="text" name="username" autocomplete="off" class="input">
             <label class="user-label">Username</label>
         </div>
         <div class="input-group">
-            <input required="" type="text" name="text" autocomplete="off" class="input">
+            <input required="" type="text" name="display_name" autocomplete="off" class="input">
         <label class="user-label" >Display Name</label>
         </div>
         <div class="input-group">
-            <input required="" type="password" name="text" autocomplete="off" class="input">
+            <input required="" type="password" name="password" autocomplete="off" class="input">
         <label class="user-label" >Password</label>
         </div>
 
@@ -31,4 +33,5 @@
         </div>
     </div>
 </div>
+</form>
 {% endblock %}

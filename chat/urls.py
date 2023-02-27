@@ -8,7 +8,7 @@ app_name = 'chat'
 urlpatterns = [
     path('', views.main_page, name='chat'),
     path('profile/', views.profile, name='profile'),
-    path('auth/login/', views.login, name='login'),
+    path('auth/login/', views.user_login, name='login'),
     path('auth/logout/', views.user_logout, name='logout'),
     path('auth/signup/', views.sign_up, name='signup'),
 ]

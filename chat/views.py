@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.contrib.auth import authenticate, login, logout
 from chat.models import Chat, File, UserProfile, Message
 from chat.forms import UserForm, UserProfileForm
 
@@ -9,8 +10,22 @@ def chat(request):
     pass
 
 
-def login(request):
-    return render(request, "chat/login.html", context={})
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
+
+        if user:
+            if user.is_active:
+                login(request, user)
+                return redirect(reverse('chat:chat'))
+        else:
+            print(f"Invalid login details: {username}, {password}")
+            return HttpResponse("Invalid login details supplied.")  #needs changed to handle wrong logins
+    else:
+        return render(request, "chat/login.html", context={})
+    
 
 
 def main_page(request):
@@ -58,4 +73,4 @@ def sign_up(request):
 @login_required
 def user_logout(request):
     logout(request)
-    return redirect(reverse())#need to add a reverse url
+    return redirect(reverse('chat:login'))#need to add a reverse url
