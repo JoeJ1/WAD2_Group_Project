@@ -5,3 +5,22 @@
     --dark-shadow-col:#5e7aaa;
     --text-col:#ffffff;
 }
+
+.floating {
+    box-shadow:  8px 8px 30px hsla(120,0%,50%,0.5),
+             -8px -8px 30px hsla(120,0%,100%,0.5);
+}
+
+.raised {
+    box-shadow:  6px 6px 12px var(--dark-shadow-col),
+                -6px -6px 12px var(--light-shadow-col);
+}
+
+.depressed {
+    box-shadow: inset 5px 5px 14px var(--dark-shadow-col),
+                inset -5px -5px 14px var(--light-shadow-col);
+}
+
+*.main-bg {
+    background-color: var(--main-col);
+}

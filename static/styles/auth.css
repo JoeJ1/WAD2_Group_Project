@@ -13,7 +13,7 @@
     background-color: var(--main-col);
     border-radius: 2rem;
     box-shadow:  8px 8px 30px hsla(120,0%,50%,0.5),
-             -8px -8px 30px hsla(120,0%,100%,0.5);
+                -8px -8px 30px hsla(120,0%,100%,0.5);
 }
 
 .cardtitle {
@@ -32,8 +32,6 @@
     width: 100%;
     border-radius: 14px;
     background: var(--main-col);
-    box-shadow: inset 5px 5px 14px var(--dark-shadow-col),
-                inset -5px -5px 14px var(--light-shadow-col);
     padding: 1rem;
     color: var(--text-col);
     margin: 0.2rem;
@@ -65,8 +63,6 @@
 button {
     border-radius: 1rem;
     background: var(--main-col);
-    box-shadow:  6px 6px 12px var(--dark-shadow-col),
-                -6px -6px 12px var(--light-shadow-col);
     border: none;
     color: var(--text-col);
     padding: 1rem;

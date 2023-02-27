@@ -14,8 +14,7 @@ def login(request):
 
 
 def main_page(request):
-    pass
-
+    return render(request, "chat/mainpage.html", context={})
 
 def profile(request):
     pass
