@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
-
+from chat.models import Chat, File, UserProfile, Message
 from chat.forms import UserForm, UserProfileForm
 
 
@@ -49,7 +49,7 @@ def sign_up(request):
         user_form = UserForm()
         profile_form = UserProfileForm()
 
-    return render(request,'',
+    return render(request,'chat/SignUp.html',
                   context={'user_form':user_form,
                            'profile_form':profile_form,
                            'registered':registered}
