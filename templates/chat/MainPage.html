@@ -5,10 +5,39 @@
     View chats
 {% endblock %}
 
+{% block includes_block %}
+<link rel="stylesheet" href="{% static 'styles/mainpage.css' %}">
+{% endblock %}
+
 {% block body_block %}
 <main>
+  <ul class="navbar">
+  <li id = "LHS"><strong>MyChat</strong></li>
+  <li id  = "RHS"><a href="{% url 'chat:login' %}">Sign out</a></li>
+  </ul>
+
+  <div class="grid-container-element">
+<div class="gird-child-mychats">
+      <h2 style = "color: white;">MyChats</h2>
+<!-- Insert list of chats student is in -->
+<ul style = "list-style-type: none; margin:0;padding:0;">
+  <li class = "urlbuttons"><a href="#">Example1</a></li>
+  <li class = "urlbuttons"><a href="#">Example 2</a></li>
+</ul>
+
+</div>
+    <div class="gird-child-myclasses">
+      <h1>MyClasses</h1>
+
+
+
+    </div>
+  </div>
+
+</main>
+<!-- <main>
 <nav class="navbar navbar-dark sticky-top main-bg floating flex-md-nowrap p-0 z-1">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">MyChat</a>
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0">MyChat</a>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
           <a class="nav-link" href="{% url 'chat:logout' %}">Sign out</a>
@@ -59,5 +88,5 @@
         </main>
       </div>
     </div>
-</main>
+</main> -->
 {% endblock %}
