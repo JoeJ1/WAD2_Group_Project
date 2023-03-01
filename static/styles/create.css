@@ -67,12 +67,106 @@ main{
 }
 
 .outer_box{
-    margin :50px;
+    margin :10px;
     padding:20px;
-    height:75%;
     border:2px solid var(--main-col-light);
     border-radius: 25px;
     background-color:var(--main-col-light);
-    box-shadow:  5px 5px 8px var(--dark-shadow-col),
-    -5px -5px 8px var(--light-shadow-col);
+    box-shadow:  2px 2px 4px var(--dark-shadow-col),
+    -2px -2px 4px var(--light-shadow-col);
+}
+
+.container {  
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px 10px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "Memebers-added Chat-title"
+      "Memebers-added chat-description"
+      "Add-memebers chats-image"
+      "Add-memebers create";
+  }
+  
+  .Memebers-added { 
+    grid-area: Memebers-added;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding : 7.5px;
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: white ;
+    background-color: white;
+    font-size: large;
+    box-shadow:  2px 2px 4px var(--dark-shadow-col),
+    -2px -2px 4px var(--light-shadow-col);
+}
+  
+  .Chat-title { grid-area: Chat-title;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding : 7.5px;
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: white ;
+    background-color: white;
+    font-size: large;
+    box-shadow:  2px 2px 4px var(--dark-shadow-col),
+    -2px -2px 4px var(--light-shadow-col);
+}
+  
+  .chat-description { grid-area: chat-description; 
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding : 7.5px;
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: white ;
+    background-color: white;
+    font-size: large;
+    box-shadow:  2px 2px 4px var(--dark-shadow-col),
+    -2px -2px 4px var(--light-shadow-col);}
+  
+  .Add-memebers { grid-area: Add-memebers; 
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding : 7.5px;
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: white ;
+    background-color: white;
+    font-size: large;
+    box-shadow:  2px 2px 4px var(--dark-shadow-col),
+    -2px -2px 4px var(--light-shadow-col);}
+  
+  .chats-image { grid-area: chats-image; 
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding : 7.5px;
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: white ;
+    background-color: white;
+    font-size: large;
+    box-shadow:  2px 2px 4px var(--dark-shadow-col),
+    -2px -2px 4px var(--light-shadow-col);}
+  
+.sections{
+    padding: 10px;
+    background-color: white;
+}
+
+.plus{
+    border:1px solid var(--main-col);
+    height: 50px;
+    width:50px;
+    border-radius: 50%;
+    background-color: var(--main-col);
+    font-size: x-large;
+    box-shadow:  1px 1px 2px var(--dark-shadow-col),
+    -1px -1px 2px var(--light-shadow-col);
+}
+.create{
+    grid-area: create;
 }
