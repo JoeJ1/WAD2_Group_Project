@@ -1,0 +1,78 @@
+html,body{
+    height:100%;
+    width:100%;
+}
+main{
+    height:100%;
+    width:100%;
+}
+
+
+.navbar{
+    list-style-type: none;
+    background-color: var(--main-col-light);
+    color: white;
+    font-size: x-large;
+    height: 10%;
+    margin: 0;
+    box-shadow:  2px 2px 4px var(--dark-shadow-col),
+    -2px -2px 4px var(--light-shadow-col);
+}
+#LHS {
+    font-style: bold;
+}
+
+#RHS{
+    padding : 7.5px;
+    border: 1px solid;
+    border-radius: 50px;
+    border-color: white ;
+    background-color: white;
+    font-size: large;
+    box-shadow:  2px 2px 4px var(--dark-shadow-col),
+    -2px -2px 4px var(--light-shadow-col);
+}
+
+
+.grid-container-element {
+    display: grid; 
+    grid-template-columns: 20% 80%;
+    height: 90%;
+    grid-template-rows: 100% 100%;
+    grid-gap: None; 
+} 
+.gird-child-mychats { 
+    padding: 10px;
+    text-align: center;
+    background-color: var(--main-col);
+}
+
+.gird-child-createchat { 
+    padding: 10px;
+    background-color: white;
+}
+
+
+.urlbuttons{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding : 7.5px;
+    border: 1px solid;
+    border-radius: 50px;
+    border-color: white ;
+    background-color: white;
+    font-size: large;
+    box-shadow:  2px 2px 4px var(--dark-shadow-col),
+    -2px -2px 4px var(--light-shadow-col);
+}
+
+.outer_box{
+    margin :50px;
+    padding:20px;
+    height:75%;
+    border:2px solid var(--main-col-light);
+    border-radius: 25px;
+    background-color:var(--main-col-light);
+    box-shadow:  5px 5px 8px var(--dark-shadow-col),
+    -5px -5px 8px var(--light-shadow-col);
+}

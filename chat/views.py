@@ -70,6 +70,9 @@ def sign_up(request):
                   )#request needs to be added
 
 
+def create_page(request):
+    return render(request,'chat/CreateChat.html',context={})
+
 @login_required
 def user_logout(request):
     logout(request)

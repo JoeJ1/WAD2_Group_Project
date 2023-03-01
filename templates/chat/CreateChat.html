@@ -1,0 +1,47 @@
+{% extends 'chat/base.html'%}
+{% load staticfiles %}
+
+{% block title_block %}
+    View chats
+{% endblock %}
+
+{% block includes_block %}
+<link rel="stylesheet" href="{% static 'styles/create.css' %}">
+{% endblock %}
+
+{% block body_block %}
+<main>
+  <!-- Nav Bar -->
+  <ul class="navbar">
+  <li id = "LHS"><strong>MyChat</strong></li>
+  <li id  = "RHS"><a href="{% url 'chat:login' %}">Sign out</a></li>
+  </ul>
+
+<div class="grid-container-element">
+<div class="gird-child-mychats">
+      <h2 style = "color: white;">MyChats</h2>
+<!-- Insert list of chats student is in -->
+<ul style = "list-style-type: none; margin:0;padding:0;">
+  <!-- when known repeat add here  -->
+  <li class = "urlbuttons"><a href="#">Example1</a></li>
+  <li class = "urlbuttons"><a href="#">Example 2</a></li>
+  <li style = "text-align: center; color:white">__________________________________</li>
+   <!-- end repeat -->
+</ul>
+
+</div>
+    <div class="gird-child-createchat">
+      <h1>Create New Chat</h1>
+
+    <div class = "outer_box">
+      <div class = "display grid">
+        
+
+      </div>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+{% endblock %}
