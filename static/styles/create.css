@@ -48,8 +48,11 @@ main{
 }
 
 .gird-child-createchat { 
-    padding: 10px;
-    background-color: white;
+    padding: 5px;
+    background-color:aliceblue;
+
+    box-shadow:  2px 2px 4px var(--dark-shadow-col),
+    -2px -2px 4px var(--light-shadow-col);
 }
 
 
@@ -66,21 +69,28 @@ main{
     -2px -2px 4px var(--light-shadow-col);
 }
 
-.outer_box{
-    margin :10px;
-    padding:20px;
-    border:2px solid var(--main-col-light);
+/* .outer_box{
+    margin :5px;
+    padding:10px;
+    border:2px solid var(--main-col);
     border-radius: 25px;
     background-color:var(--main-col-light);
     box-shadow:  2px 2px 4px var(--dark-shadow-col),
     -2px -2px 4px var(--light-shadow-col);
-}
+} */
 
 .container {  
+    margin :10px;
+    padding:20px;
+    border:2px solid var(--main-col);
+    border-radius: 25px;
+    background-color:var(--main-col);
+    box-shadow:  2px 2px 4px var(--dark-shadow-col),
+    -1px -1px 2px var(--light-shadow-col);
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 10px 10px;
+    gap: 5px 20px;
     grid-auto-flow: row;
     grid-template-areas:
       "Memebers-added Chat-title"
