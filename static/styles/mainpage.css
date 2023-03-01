@@ -57,7 +57,7 @@ main{
 }
 
 .gird-child-myclasses { 
-    padding: 15px;
+    padding: 7px;
     background-color: white;
 }
 
@@ -75,4 +75,44 @@ main{
     -2px -2px 4px var(--light-shadow-col);
 }
 
+.grid_myClasses{
+    color:white;
+    display: grid; 
+    grid-gap: 18px;
+    margin-left:5px;
+    margin-right: 5px;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 80%;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
 
+
+.grid-child-myclassicon{
+    background-color: var(--main-col-light);
+    padding:5px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow:  2px 2px 4px var(--dark-shadow-col),
+    -2px -2px 4px var(--light-shadow-col);
+}
+
+.imagebackground{
+    border:2px solid white;
+    border-radius: 10px;
+    background-color: white;
+    margin-bottom: 5px;
+}
+
+img {
+    height :95px;
+    width:auto;
+}
+
+.classname{
+    color : var(--main-col);
+    background-color: white;
+    border:1px solid white;
+    border-radius: 20px;
+}
