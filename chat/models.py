@@ -2,6 +2,7 @@ import uuid
 from django.db import models
 from django.contrib.auth.models import User as DjangoUser
 from django.template.defaultfilters import slugify
+from django.utils import timezone
 
 USERNAME_LEN = 30
 DISPLAY_NAME_LEN = 50
@@ -21,13 +22,15 @@ class Chat(models.Model):
     description = models.CharField(max_length=240)
     users = models.ManyToManyField(UserProfile, related_name="chats")
     owner = models.ForeignKey(UserProfile, on_delete = models.CASCADE, related_name= 'chats_owned')
-    #slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True)
 
-    #def save(self, *args, **kwargs):
-    #    self.slug = slugify(self.name)
-    #    super(Chat, self).save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Chat, self).save(*args, **kwargs)
     def __str__(self):
         return self.name
+
+
 
 class Message(models.Model):
     ID = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -35,7 +38,11 @@ class Message(models.Model):
     display_name = models.ForeignKey(UserProfile,  on_delete= models.CASCADE, related_name = 'sender_name')#Why is this needed?
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE, related_name='messages')
     sender = models.ForeignKey(UserProfile, on_delete= models.CASCADE, related_name= 'sender')
-    #time_stamp = models.DateTimeField(auto_now_add=True)
+    #time_stamp = models.DateTimeField(auto_now_add=True,blank=True)
+
+    #def save(self,*args,**kwargs):
+    #    self.time_stamp= timezone.now()
+    #    super(Message,self).save(*args,**kwargs)
 
     def __str__(self):
         return f"\"{self.content}\""
