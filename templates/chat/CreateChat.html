@@ -16,13 +16,48 @@
   background-color: #91b1f7;
   color:#fff;
 }
-.section{
-  background-color: #fff;
-  border:2px solid #ffff;
-  border-radius: 10px;
-  color:#91b1f7;
-  padding:0px;
+.center{
+  height: 25vh;
+  width: 300px;
+  position: relative;
 }
+.box {
+  color:#6e8fc8;
+  background: #6e8fc8;
+  width:55rem;
+  height:50vh;
+  position: absolute;
+  padding:10px;
+  border-radius: 15px;
+  top: 50%;
+  left: 50%;
+  margin: -50px 0 0 -50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 0.5fr;
+  gap: 7px 7px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Memebers-added Chat-title"
+    "Memebers-added chat-description"
+    "Add-memebers chats-image"
+    "Create Create";
+}
+
+.Memebers-added { grid-area: Memebers-added; }
+
+.Chat-title { grid-area: Chat-title; }
+
+.chat-description { grid-area: chat-description; }
+
+.Add-memebers { grid-area: Add-memebers; }
+
+.chats-image { grid-area: chats-image;}
+
+.Create { grid-area: Create;
+text-align: center; }
+
+
   </style>
 {% endblock %}
 
@@ -32,46 +67,14 @@ Create New Chat
 
 
 {% block body_block %}
-
-        <div class="container-fluid box-size">
-          <div class="row">
-            <div class="col-md-6 section">
-              Added Members
-            </div>
-            <div class="col-md-6">
-              <div class="row">
-                <div class="col-md-12 section">
-                  Chat Name
-                  <input type="text" class="form-control" name="displayname" id="displayname" placeholder="Enter Chat Name">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12 section">
-                  Description
-                  <input type="text" class="form-control" name="displayname" id="displayname" placeholder="Enter Chat description">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 section">
-              add 
-              <div class="mb-3">
-                <!-- needs action etc -->
-                <form>
-                <input type="text" class="form-control" name="displayname" id="displayname" placeholder="Enter user name">
-                <button type="submit" class="btn btn-primary">add</button>
-                </form>
-              </div>
-            </div>
-            <div class="col-md-6 section">
-              upload
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <button type="submit" class="btn btn-primary">Create</button>
-            </div>
-          </div>
-        </div>
+<div class="center">
+<div class="box">
+  <div class="Memebers-added urlbuttons" style = "border-radius: 15px;">Members Added</div>
+  <div class="Chat-title urlbuttons">Chat Title</div>
+  <div class="chat-description urlbuttons">Description</div>
+  <div class="Add-memebers urlbuttons">Add Members</div>
+  <div class="chats-image urlbuttons">Upload background Chat</div>
+  <div class="Create urlbuttons">Create</div>
+</div>
+</div>
 {% endblock %}
