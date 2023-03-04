@@ -1,4 +1,4 @@
-{% extends 'chat/base.html'%}
+{% extends 'chat/chattemplates.html'%}
 {% load staticfiles %}
 
 {% block title_block %}
@@ -6,60 +6,72 @@
 {% endblock %}
 
 {% block includes_block %}
-<link rel="stylesheet" href="{% static 'styles/create.css' %}">
+<style>
+.box-size{
+  height:fit-content;
+  width:55rem;
+  border:2px solid #91b1f7;
+  border-radius: 20px;
+  padding:15px;
+  background-color: #91b1f7;
+  color:#fff;
+}
+.section{
+  background-color: #fff;
+  border:2px solid #ffff;
+  border-radius: 10px;
+  color:#91b1f7;
+  padding:0px;
+}
+  </style>
 {% endblock %}
 
+{% block content_title %}
+Create New Chat
+{% endblock %}
+
+
 {% block body_block %}
-<main>
-  <!-- Nav Bar -->
-  <ul class="navbar">
-  <li id = "LHS"><strong>MyChat</strong></li>
-  <li id  = "RHS"><a href="{% url 'chat:login' %}">Sign out</a></li>
-  </ul>
 
-<div class="grid-container-element">
-<div class="gird-child-mychats">
-      <h2 style = "color: white;">MyChats</h2>
-<!-- Insert list of chats student is in -->
-<ul style = "list-style-type: none; margin:0;padding:0;">
-  <!-- when known repeat add here  -->
-  <li class = "urlbuttons"><a href="#">Example1</a></li>
-  <li class = "urlbuttons"><a href="#">Example 2</a></li>
-  <li style = "text-align: center; color:white">__________________________________</li>
-   <!-- end repeat -->
-</ul>
-
-</div>
-    <div class="gird-child-createchat">
-      <h1>Create New Chat</h1>
-      <div class="container">
-        <div class="Memebers-added">Members added
-          <ul style = "list-style-type: None;padding:0;margin:0">
-            <li class = "memberbox">Display Name</li>
-            <li class = "memberbox">Display Name</li>
-            <li class = "memberbox">Display Name</li>
-            <li class = "memberbox">Display Name</li>
-          </ul>
-        </div>
-        <div class="Chat-title">Chat Name<br>
-          <input type="text" id="chat_name" name="chat_name" class = "urlbuttons">
-        </div>
-        <div class="chat-description">Chat Descrption<br>
-          <input type="text" id="chat_des" name="chat_des" class = "urlbuttons"></div>
-        <div class="Add-memebers"><label>Add Member</label><br>
-          <div>
-            <div class ="searchbar" style = "display: inline;">
-              <input type="text" id="membername" name="membername" class = "urlbuttons">
+        <div class="container-fluid box-size">
+          <div class="row">
+            <div class="col-md-6 section">
+              Added Members
             </div>
-            <div class = "urlbuttons" style = "display: inline;">+</div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-12 section">
+                  Chat Name
+                  <input type="text" class="form-control" name="displayname" id="displayname" placeholder="Enter Chat Name">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 section">
+                  Description
+                  <input type="text" class="form-control" name="displayname" id="displayname" placeholder="Enter Chat description">
+                </div>
+              </div>
             </div>
-
+          </div>
+          <div class="row">
+            <div class="col-md-6 section">
+              add 
+              <div class="mb-3">
+                <!-- needs action etc -->
+                <form>
+                <input type="text" class="form-control" name="displayname" id="displayname" placeholder="Enter user name">
+                <button type="submit" class="btn btn-primary">add</button>
+                </form>
+              </div>
+            </div>
+            <div class="col-md-6 section">
+              upload
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+          </div>
         </div>
-        <div class="chats-image">Upload Image<br>
-          <input type="file" id="myFile" name="filename">
-        </div>
-        <div class = "urlbuttons">Create Chat</div>
-    </div>
-
-</main>
 {% endblock %}

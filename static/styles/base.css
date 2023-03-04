@@ -24,3 +24,17 @@
 *.main-bg {
     background-color: var(--main-col);
 }
+
+.urlbuttons{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding : 7.5px;
+    border: 1px solid;
+    border-radius: 50px;
+    border-color: white ;
+    background-color: white;
+    font-size: large;
+    box-shadow:  2px 2px 4px var(--dark-shadow-col),
+    -2px -2px 4px var(--light-shadow-col);
+}
+
