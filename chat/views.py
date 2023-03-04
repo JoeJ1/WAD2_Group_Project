@@ -77,3 +77,9 @@ def create_page(request):
 def user_logout(request):
     logout(request)
     return redirect(reverse('chat:login'))#need to add a reverse url
+
+def test(request):
+    return render(request,'chat/test.html',context = {})
+
+def profile(request):
+    return render(request,'chat/Profile.html',context={})

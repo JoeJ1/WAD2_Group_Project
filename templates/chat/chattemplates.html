@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html>
+    <head lang="en">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MyChat - 
+        {% block title_block %}
+        {% endblock %}
+        </title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">       </title>
+        <link href="{% static 'styles/base.css' %}" rel="stylesheet">
+        <style>
+            /* my styles wasn't working on sepatate sheet for some reason so had to do below */
+        body{
+            color:#ffff;
+        }
+        .my-col{
+            background-color: #6e8fc8;
+            height:100vh;
+            padding:10px;
+            font-size:x-large;
+        }
+
+        .content-col{
+            padding:10px;
+            background-color: #ffff;
+            color:#6e8fc8;
+        }
+        .urlbuttons{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding : 7.5px;
+        border: 1px solid;
+        border-radius: 50px;
+        border-color: white ;
+        background-color: white;
+        font-size: large;
+        text-align: center;
+        box-shadow:  2px 2px 4px var(--dark-shadow-col),
+        -2px -2px 4px var(--light-shadow-col);
+        }
+
+        .line{
+            border-bottom: 1px solid #ffff;
+            display: block;
+        }
+        </style>
+        {% block includes_block %}
+        {% endblock %}
+    </head>
+    <body>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <nav class="navbar navbar-dark" style="background-color: #91b1f7;">
+            <div class="container-fluid">
+              <a class="navbar-brand"><strong>MyChatGLA</strong></a>
+              <form class="d-flex">
+                <button class="btn btn-outline-primary" type="submit" style="color:#ffff;border: 1px solid #ffff;">Proflie</button>
+              </form>
+            </div>
+          </nav>
+          <main>
+            <div class="container-fluid">
+                <div class="row row-tall">
+                    <div class="col-md-2 my-col chat-col">
+                        <h2 class="text-center">
+                            My Chats
+                        </h2>
+                        <ul style = "list-style-type: none; margin:0;padding:0;">
+                            <!-- when known repeat add here  -->
+                            <a href="#"><li class = "urlbuttons">WAD Group</li></a>
+                            <a href="#"><li class = "urlbuttons">OOSE lab 1</li></a>
+                            <!-- end repeat -->
+                            <span class="line"></span>
+                            <a href="{% url 'chat:create' %}"><li class = "urlbuttons">Create Class</li></a>
+                          </ul>
+                    </div>
+                    <div class="col-md-9 my-col content-col">
+                        <h2 class="text-left">
+                            {% block content_title %}
+                            {% endblock %}
+                        </h2>
+                        {% block body_block %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>   <body>
+    </body>
+</html>
