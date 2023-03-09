@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block title_block %}
-    View chats
+    Create Chat
 {% endblock %}
 
 {% block includes_block %}
@@ -22,9 +22,18 @@
   position: relative;
 }
 .box {
-  color:white;
   background-color: var(--main-col);
   border-radius: 20px;
+}
+.myrows{
+  margin: 10px;
+}
+
+.mycol{
+  background-color: white;
+  border-radius: 20px;
+  padding: 5px 15px 5px 15px;
+
 }
 
 .Memebers-added { grid-area: Memebers-added; }
@@ -61,20 +70,30 @@ Create New Chat
 </div>
 </div> -->
 
-<div class="container-fluid box">
-  <div class="row justify-content-center align-items-center g-2">
-    <div class="col">Memebers added</div>
-    <div class="col">Chat Title</div>
+<div class="container-fluid p-2 g-2 box">
+  <div class="row g-5 justify-content-center align-items-top myrows">
+    <div class="col">
+      <div class = "mycol">Memebers added</div>
+      </div>
+    <div class="col">
+      <div class="container-fluid">
+        <div class = "mycol" style="margin-bottom:10px;">Chat Name</div>
+        <div class = "mycol">Chat Description</div>
+      </div>
+    </div>
   </div>
-  <div class="row justify-content-center align-items-center g-2">
-    <div class="col">Chat Description</div>
+
+    <div class="row g-5 justify-content-center align-items-center g-2 myrows">
+    <div class="col">
+      <div class = "mycol">Add Members</div>
+    </div>
+    
+    <div class="col">
+      <div class = "mycol">Upload Image</div>
+    </div>
   </div>
-    <div class="row justify-content-center align-items-center g-2">
-    <div class="col">Add Members</div>
-    <div class="col">Upload Background</div>
-  </div>
-  <div class="row justify-content-center align-items-center g-2">
-    <div class="col">Create</div>
+  <div class="row g-5 justify-content-center align-items-center g-2 myrows">
+    <div class="col urlbuttons " style = "text-align: center;">Create</div>
   </div>
   
 </div>

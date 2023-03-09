@@ -1,4 +1,4 @@
-{% extends 'chat/base.html'%}
+{% extends 'chat/chattemplates.html'%}
 {% load staticfiles %}
 
 {% block title_block %}
@@ -9,30 +9,11 @@
 <link rel="stylesheet" href="{% static 'styles/mainpage.css' %}">
 {% endblock %}
 
+{% block content_title %}
+  Create New Chat
+{% endblock %}
 {% block body_block %}
-<main>
-  <!-- Nav Bar -->
-  <ul class="navbar">
-  <li id = "LHS"><strong>MyChat</strong></li>
-  <li id  = "RHS"><a href="{% url 'chat:login' %}">Sign out</a></li>
-  </ul>
-
-<div class="grid-container-element">
-<div class="gird-child-mychats">
-      <h2 style = "color: white;">MyChats</h2>
-<!-- Insert list of chats student is in -->
-<ul style = "list-style-type: none; margin:0;padding:0;">
-  <!-- when known repeat add here  -->
-  <li class = "urlbuttons"><a href="#">Example1</a></li>
-  <li class = "urlbuttons"><a href="#">Example 2</a></li>
-  <li style = "text-align: center; color:white">__________________________________</li>
-  <li class = "urlbuttons"><a href="{% url 'chat:create' %}">Create New Chat</a></li>
-   <!-- end repeat -->
-</ul>
-
-</div>
     <div class="gird-child-myclasses">
-      <h1>MyClasses</h1>
       <div class = "grid_myClasses">
         <!-- Repeat here for classes -->
         <a href="#">
@@ -43,7 +24,7 @@
       </a>
       <!-- end repeat -->
 
-                <a href="#">
+        <a href="#">
         <div class = "grid-child-myclassicon">
           <div class = "imagebackground"><img src = "{% static 'images/classhat.jpg' %}" alt = "teacher hat"></div>
           <div class = classname>Class name </div>
@@ -95,7 +76,5 @@
       </div>
     </div>
   </div>
-
-</main>
 {% endblock %}
 
