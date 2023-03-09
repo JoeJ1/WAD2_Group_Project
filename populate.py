@@ -37,8 +37,6 @@ def populate():
          "description":'Secret cult meeting',
          "users":'',
          "owner": users["Joe"]}
-
-
     ]
 
     for chat in chats:

@@ -25,6 +25,18 @@
     background-color: var(--main-col);
 }
 
+.my-col{
+    background-color: #6e8fc8;
+    height:100vh;
+    padding:10px;
+    font-size:x-large;
+}
+
+.content-col{
+    padding:10px;
+    background-color: #ffff;
+    color:#6e8fc8;
+}
 .urlbuttons{
     margin-top: 10px;
     margin-bottom: 10px;
@@ -38,6 +50,10 @@
     -2px -2px 4px var(--light-shadow-col);
 }
 
+.line{
+    border-bottom: 1px solid #ffff;
+    display: block;
+}
 
 button {
     border-radius: 1rem;
