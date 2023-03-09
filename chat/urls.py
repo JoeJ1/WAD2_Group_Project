@@ -14,4 +14,5 @@ urlpatterns = [
     path('auth/signup/', views.sign_up, name='signup'),
     path('profile/', views.profile, name='profile'),
     path('test/', views.test, name='test'),
+    path('chatroom/<str:chat_name>/', views.chat, name='chatroom'),
 ]

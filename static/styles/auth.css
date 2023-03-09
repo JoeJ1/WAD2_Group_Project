@@ -6,7 +6,7 @@
 
 .card {
     max-width:330px;
-    height: 25rem;
+    height: 26rem;
     padding: 0 1rem;
     align-items: center;
     justify-content: center;
@@ -60,17 +60,15 @@
     padding: 0.2em;
 }
 
-button {
-    border-radius: 1rem;
-    background: var(--main-col);
-    border: none;
-    color: var(--text-col);
-    padding: 1rem;
-    width:100%;
-    font-size: 1.2rem;
-    transition: 150ms;
+.help-text-container {
+    margin-bottom: 0.5rem;
 }
 
+button {
+    padding: 1rem;
+    width:100%;
+}
+/*
 button:hover {
     background-color: var(--main-col-light);
     box-shadow:  10px 10px 15px var(--dark-shadow-col),
@@ -84,7 +82,7 @@ button:active {
     border: none;
     transition: box-shadow 10ms;
 }
-
+*/
 div span.login-text{
   text-align: center;
   color: var(--text-col);

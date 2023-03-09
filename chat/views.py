@@ -6,9 +6,8 @@ from chat.models import Chat, File, UserProfile, Message
 from chat.forms import UserForm, UserProfileForm
 
 
-def chat(request):
-    pass
-
+def chat(request, chat_name):
+    return render(request, 'chat/chat.html', {'chat_name':chat_name})
 
 def user_login(request):
     if request.method == 'POST':

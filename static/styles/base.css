@@ -38,3 +38,26 @@
     -2px -2px 4px var(--light-shadow-col);
 }
 
+
+button {
+    border-radius: 1rem;
+    background: var(--main-col);
+    border: none;
+    color: var(--text-col);
+    font-size: 1.2rem;
+    transition: 150ms;
+}
+
+button:hover {
+    background-color: var(--main-col-light);
+    box-shadow:  10px 10px 15px var(--dark-shadow-col),
+             -10px -10px 15px var(--light-shadow-col);
+    transition: box-shadow 150ms;
+}
+
+button:active {
+    background-color: var(--main-col);
+    box-shadow:  none;
+    border: none;
+    transition: box-shadow 10ms;
+}
