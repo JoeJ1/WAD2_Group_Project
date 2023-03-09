@@ -7,7 +7,7 @@ from chat.forms import UserForm, UserProfileForm
 
 
 def chat(request, chat_name):
-    return render(request, 'chat/chat.html', {'chat_name':chat_name})
+    return render(request, 'chat/chat.html', {'chat_name':chat_name, 'username':request.user.username})
 
 def user_login(request):
     if request.method == 'POST':
@@ -25,14 +25,17 @@ def user_login(request):
     else:
         return render(request, "chat/login.html", context={})
     
-
-
 def main_page(request):
     return render(request, "chat/mainpage.html", context={})
 
 def profile(request):
     pass
 
+def send_message(request, message):
+    pass
+
+def check_messages(request):
+    pass
 
 def sign_up(request):
     registered = False
