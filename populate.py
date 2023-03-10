@@ -1,15 +1,7 @@
 import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE',
                       'MyChatGLA.settings')
-
 import django
-
-
-
-
-
-
-
 
 def populate():
 
