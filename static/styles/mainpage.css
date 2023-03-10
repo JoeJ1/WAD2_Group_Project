@@ -77,7 +77,7 @@ main{
 }
 
 .grid_myClasses{
-    color:white;
+    color:rgb(0, 0, 0);
     display: grid; 
     grid-gap: 18px;
     margin-left:5px;

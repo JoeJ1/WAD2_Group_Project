@@ -5,24 +5,23 @@ from django.contrib.auth import authenticate, login, logout
 from chat.models import Chat, File, UserProfile, Message
 from chat.forms import UserForm, UserProfileForm
 
-# def get_user_chats(request):
-#     context_dict = {}
-#     try:
-#         chat_list = []
-#         # for i in Chat.objects.all():
-#         #     print(i.users.all())
-#         for chat in Chat.objects.all():
-#             for user in chat.users.all():
-#                 if str(user) == str(request.user):
-#                     chat_list.append(chat)
-#                     break
-#         context_dict['chats'] = chat_list
-#     except:
-#         context_dict['chats'] = None
-#     return context_dict
+def get_user_chats(request):
+    context_dict = {}
+    try:
+        chat_list = []
+        # for i in Chat.objects.all():
+        #     print(i.users.all())
+        for chat in Chat.objects.all():
+            for user in chat.users.all():
+                if str(user) == str(request.user):
+                    chat_list.append(chat)
+                    break
+        context_dict['chats'] = chat_list
+    except:
+        context_dict['chats'] = None
+    return context_dict
 
-#  idk if i still need this so dont delete
-
+@login_required
 def chat(request, chat_name_slug):
     chat_list = Chat.objects.all()
     context_dict = {}
@@ -44,12 +43,10 @@ def user_login(request):
             return HttpResponse("Invalid login details supplied.")  #needs changed to handle wrong logins
     else:
         return render(request, "chat/login.html", context={})
-    
-def main_page(request):
-    return render(request, "chat/mainpage.html", context={})
 
-def profile(request):
-    pass
+@login_required
+def main_page(request):
+    return render(request, "chat/mainpage.html", context=get_user_chats(request))
 
 def send_message(request, message):
     pass
@@ -91,7 +88,7 @@ def sign_up(request):
                            'registered':registered}
                   )#request needs to be added
 
-
+@login_required
 def create_page(request):
     return render(request,'chat/CreateChat.html',context={})
 
@@ -103,5 +100,6 @@ def user_logout(request):
 def test(request):
     return render(request,'chat/test.html',context = {})
 
+@login_required
 def profile(request):
-    return render(request,'chat/Profile.html',context={})
+    return render(request,'chat/profile.html',context={})

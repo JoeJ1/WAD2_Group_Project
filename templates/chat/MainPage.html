@@ -10,69 +10,25 @@
 {% endblock %}
 
 {% block content_title %}
-  Create New Chat
+    My Chats
 {% endblock %}
 {% block body_block %}
     <div class="gird-child-myclasses">
       <div class = "grid_myClasses">
-        <!-- Repeat here for classes -->
-        <a href="#">
-        <div class = "grid-child-myclassicon">
-          <div class = "imagebackground"><img src = "{% static 'images/classhat.jpg' %}" alt = "teacher hat"></div>
-          <div class = classname>Class name </div>
-        </div>
-      </a>
-      <!-- end repeat -->
 
-        <a href="#">
-        <div class = "grid-child-myclassicon">
-          <div class = "imagebackground"><img src = "{% static 'images/classhat.jpg' %}" alt = "teacher hat"></div>
-          <div class = classname>Class name </div>
-        </div>
-      </a>
-      <a href="#">
-        <div class = "grid-child-myclassicon">
-          <div class = "imagebackground"><img src = "{% static 'images/classhat.jpg' %}" alt = "teacher hat"></div>
-          <div class = classname>Class name </div>
-        </div>
-      </a>
-      <a href="#">
-        <div class = "grid-child-myclassicon">
-          <div class = "imagebackground"><img src = "{% static 'images/classhat.jpg' %}" alt = "teacher hat"></div>
-          <div class = classname>Class name </div>
-        </div>
-      </a>
-      <a href="#">
-        <div class = "grid-child-myclassicon">
-          <div class = "imagebackground"><img src = "{% static 'images/classhat.jpg' %}" alt = "teacher hat"></div>
-          <div class = classname>Class name </div>
-        </div>
-      </a>
-      <a href="#">
-        <div class = "grid-child-myclassicon">
-          <div class = "imagebackground"><img src = "{% static 'images/classhat.jpg' %}" alt = "teacher hat"></div>
-          <div class = classname>Class name </div>
-        </div>
-      </a>
-      <a href="#">
-        <div class = "grid-child-myclassicon">
-          <div class = "imagebackground"><img src = "{% static 'images/classhat.jpg' %}" alt = "teacher hat"></div>
-          <div class = classname>Class name </div>
-        </div>
-      </a>
-      <a href="#">
-        <div class = "grid-child-myclassicon">
-          <div class = "imagebackground"><img src = "{% static 'images/classhat.jpg' %}" alt = "teacher hat"></div>
-          <div class = classname>Class name </div>
-        </div>
-      </a>
-      <a href="#">
-        <div class = "grid-child-myclassicon">
-          <div class = "imagebackground"><img src = "{% static 'images/classhat.jpg' %}" alt = "teacher hat"></div>
-          <div class = classname>Class name </div>
-        </div>
-      </a>
-      
+        {% if chats %}
+            {% for chat in chats %}
+            <a href="{% url 'chat:chatroom' chat.slug %}">
+              <div class = "grid-child-myclassicon">
+                <div class = "imagebackground"><img src = "{% static 'images/classhat.jpg' %}" alt = "teacher hat"></div>
+                <div class = classname>{{ chat.name }}</div>
+              </div>
+            </a>
+            {% endfor %}
+        {% else %}
+            You are in no chats.
+        {% endif %}
+
       </div>
     </div>
   </div>
