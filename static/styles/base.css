@@ -83,3 +83,11 @@ button:active {
     border: none;
     transition: box-shadow 10ms;
 }
+
+.imgbackground {
+    background-image: url('static/images/logo.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }

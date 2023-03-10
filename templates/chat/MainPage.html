@@ -20,8 +20,8 @@
             {% for chat in chats %}
             <a href="{% url 'chat:chatroom' chat.slug %}">
               <div class = "grid-child-myclassicon">
-                <div class = "imagebackground"><img src = "{% static 'images/classhat.jpg' %}" alt = "teacher hat"></div>
-                <div class = classname>{{ chat.name }}</div>
+                <div class = "imagebackground"><img  class = "imgchat" src = "{% static 'images/classhat.jpg' %}" alt = "teacher hat"></div>
+                <div class = classname>{{ chat.name }}</div> 
               </div>
             </a>
             {% endfor %}

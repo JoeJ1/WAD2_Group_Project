@@ -1,47 +1,3 @@
-html,body{
-    height:100%;
-    width:100%;
-}
-main{
-    height:100%;
-    width:100%;
-}
-
-
-.navbar{
-    list-style-type: none;
-    background-color: var(--main-col-light);
-    color: white;
-    font-size: x-large;
-    height: 10%;
-    margin: 0;
-    box-shadow:  2px 2px 4px var(--dark-shadow-col),
-    -2px -2px 4px var(--light-shadow-col);
-}
-#LHS {
-    font-style: bold;
-}
-
-#RHS{
-    padding : 7.5px;
-    border: 1px solid;
-    border-radius: 50px;
-    border-color: white ;
-    background-color: white;
-    font-size: large;
-    box-shadow:  2px 2px 4px var(--dark-shadow-col),
-    -2px -2px 4px var(--light-shadow-col);
-}
-
-#MyClasses{
-    display:inline;
-}
-
-#MyChats{
-    background-color: var(--main-col);
-    display:inline;
-    width:25%;
-}
 
 .grid-container-element {
     display: grid; 
@@ -106,8 +62,8 @@ main{
     margin-bottom: 5px;
 }
 
-img {
-    height :95px;
+.imgchat {
+    height :96px;
     width:auto;
 }
 
