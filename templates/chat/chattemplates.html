@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load staticfiles %}
 {% load static %}
+{% load chat_template_tags %}
 
 <html>
     <head lang="en">
@@ -14,43 +15,6 @@
         <link href="{% static 'styles/base.css' %}" rel="stylesheet">
         {% block includes_block %}
         {% endblock %}
-
-        <style>
-            /* my styles wasn't working on sepatate sheet for some reason so had to do below */
-        body{
-            color:#ffff;
-        }
-        /*.my-col{
-            background-color: #6e8fc8;
-            height:100vh;
-            padding:10px;
-            font-size:x-large;
-        }
-
-        .content-col{
-            padding:10px;
-            background-color: #ffff;
-            color:#6e8fc8;
-        }
-        .urlbuttons{
-        margin-top: 10px;
-        margin-bottom: 10px;
-        padding : 7.5px;
-        border: 1px solid;
-        border-radius: 50px;
-        border-color: white ;
-        background-color: white;
-        font-size: large;
-        text-align: center;
-        box-shadow:  2px 2px 4px var(--dark-shadow-col),
-        -2px -2px 4px var(--light-shadow-col);
-        }
-
-        .line{
-            border-bottom: 1px solid #ffff;
-            display: block;
-        }*/
-        </style>
     </head>
     <body>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -70,10 +34,9 @@
                             My Chats
                         </h2>
                         <ul style = "list-style-type: none; margin:0;padding:0;">
-                            <!-- when known repeat add here  -->
-                            <a href="/chat/chatroom/WAD Group/"><li class = "urlbuttons">WAD Group</li></a>
-                            <a href="/chat/chatroom/OOSE lab 1/"><li class = "urlbuttons">OOSE lab 1</li></a>
-                            <!-- end repeat -->
+
+                            {% get_chat_list request current_chat %}
+
                             <span class="line"></span>
                             <a href="{% url 'chat:create' %}"><li class = "urlbuttons">Create Chat</li></a>
                           </ul>

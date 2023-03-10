@@ -5,9 +5,29 @@ from django.contrib.auth import authenticate, login, logout
 from chat.models import Chat, File, UserProfile, Message
 from chat.forms import UserForm, UserProfileForm
 
+# def get_user_chats(request):
+#     context_dict = {}
+#     try:
+#         chat_list = []
+#         # for i in Chat.objects.all():
+#         #     print(i.users.all())
+#         for chat in Chat.objects.all():
+#             for user in chat.users.all():
+#                 if str(user) == str(request.user):
+#                     chat_list.append(chat)
+#                     break
+#         context_dict['chats'] = chat_list
+#     except:
+#         context_dict['chats'] = None
+#     return context_dict
 
-def chat(request, chat_name):
-    return render(request, 'chat/chat.html', {'chat_name':chat_name, 'username':request.user.username})
+#  idk if i still need this so dont delete
+
+def chat(request, chat_name_slug):
+    chat_list = Chat.objects.all()
+    context_dict = {}
+    context_dict['chats'] = chat_list
+    return render(request, 'chat/chat.html', context_dict)
 
 def user_login(request):
     if request.method == 'POST':
