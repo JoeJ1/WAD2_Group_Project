@@ -57,6 +57,14 @@ def create_chat(name,description,owner):
 
 if __name__ == '__main__':
     django.setup()
+    if os.name != 'nt': # not on windows, i.e. no batch
+        for f in os.listdir('.'):
+            if f.endswith('.sqlite3'):
+                os.remove(f)
+        from django.core.management import execute_from_command_line
+        execute_from_command_line(['manage.py', 'migrate'])
+        from django.contrib.auth.models import User
+        User.objects.create_superuser('root', '', 'root')
     # import AFTER setup
     from chat.models import UserProfile, Chat, Message, File
     from django.contrib.auth.models import User
