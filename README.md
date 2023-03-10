@@ -8,6 +8,7 @@ Make Sure you pull before you commit anything
 * LEWIS
 * David
 * Reuben
+* James
 
 ## Requirements
 * User authentication
