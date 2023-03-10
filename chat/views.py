@@ -23,9 +23,11 @@ def get_user_chats(request):
 
 @login_required
 def chat(request, chat_name_slug):
-    chat_list = Chat.objects.all()
     context_dict = {}
-    context_dict['chats'] = chat_list
+    context_dict['chats'] = Chat.objects.all()
+    this_chat = Chat.objects.filter(slug=chat_name_slug)[0]
+    context_dict['messages'] = Message.objects.filter(chat=this_chat)
+    context_dict['chat_name'] = this_chat.name
     return render(request, 'chat/chat.html', context_dict)
 
 def user_login(request):
