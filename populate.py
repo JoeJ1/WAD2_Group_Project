@@ -31,12 +31,35 @@ def populate():
          "owner": users["Joe"]}
     ]
 
+    messages = [
+        {'chat':'Wad_Buds',
+         'sender':'Onur_H',
+         'content':'Hello!'},
+        {'chat':'Wad_Buds',
+         'sender':'Reuben_C',
+         'content':'Hi! 123'},
+        {'chat':'Wad_Buds',
+         'sender':'Lewis_S',
+         'content':'12345678'},
+        {'chat':'The Brotherhood',
+         'sender':'Joe_F',
+         'content':'12345678'},
+        {'chat':'The Brotherhood',
+         'sender':'David_B',
+         'content':'910111213'},
+        {'chat':'The Brotherhood',
+         'sender':'James_T',
+         'content':'19579825985198'},
+    ]
+
     for chat in chats:
         c = create_chat(chat['name'],chat['description'],chat['owner'])
         for user in users:
             if users[user] != chat['owner']:#This can be changed depending on the implementation down the line this exludes the owner to be added as used
                 c.users.add(users[user])
 
+    for message in messages:
+        add_message(message['sender'],message['chat'],message['content'])
 
 def add_user(username,password,display_name,picture):
     try:
@@ -47,9 +70,15 @@ def add_user(username,password,display_name,picture):
     except:
         return None
 
+def add_message(sender_username, chat_name, content):
+    s = UserProfile.objects.filter(user=User.objects.filter(username=sender_username)[0])[0]
+    c = Chat.objects.filter(name=chat_name)[0]
+    m = Message.objects.get_or_create(content=content, chat=c, sender=s)[0]
+    m.save()
+    return m
+
 def create_chat(name,description,owner):
     c = Chat.objects.get_or_create(name=name,description=description,owner=owner)[0]
-    #c.slug = slugify(name)
     c.save()
     return c
 

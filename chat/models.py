@@ -30,12 +30,10 @@ class Chat(models.Model):
     def __str__(self):
         return self.name
 
-
-
 class Message(models.Model):
     ID = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     content = models.TextField()
-    display_name = models.ForeignKey(UserProfile,  on_delete= models.CASCADE, related_name = 'sender_name')#Why is this needed?
+    #display_name = models.ForeignKey(UserProfile,  on_delete= models.CASCADE, related_name = 'sender_name')#Why is this needed?
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE, related_name='messages')
     sender = models.ForeignKey(UserProfile, on_delete= models.CASCADE, related_name= 'sender')
     time_stamp = models.DateTimeField(default=timezone.now())
