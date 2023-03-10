@@ -1,4 +1,7 @@
 class BackendTest(TestCase):
+
+  # Database & Database Interaction
+
   def test_user_authentication(self):
     self.assertEqual(True, True)
 
@@ -27,5 +30,19 @@ class BackendTest(TestCase):
     self.assertEqual(True, True)
     
   def test_owners_can_add_members_to_chats_they_own(self):
+    self.assertEqual(True, True)
+
+   # Website & User Interface
+
+  def test_website_should_include_nav_bar(self):
+    self.assertEqual(True, True)
+    
+  def test_live_chat_form_using_ajax_or_asgi(self):
+    self.assertEqual(True, True)
+    
+  def test_user_should_be_able_to_see_and_interact_with_live_chats(self):
+    self.assertEqual(True, True)
+    
+  def test_owner_sees_different_interface_compared_to_member(self):
     self.assertEqual(True, True)
 
