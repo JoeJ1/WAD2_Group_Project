@@ -46,8 +46,14 @@
     border-color: white ;
     background-color: white;
     font-size: large;
+    text-align: center;
     box-shadow:  2px 2px 4px var(--dark-shadow-col),
     -2px -2px 4px var(--light-shadow-col);
+}
+.chatnav{
+    list-style-type: none;
+     margin:0;padding:0;
+      text-align: center;
 }
 
 .line{
