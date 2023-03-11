@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from chat.models import Chat, File, UserProfile, Message
-from chat.forms import UserForm, UserProfileForm
+from chat.forms import UserForm, UserProfileForm, ChatForm
 
 @login_required
 def leave_group_chat(request, chat_name_slug):
@@ -108,6 +108,10 @@ def sign_up(request):
 
 @login_required
 def create_page(request):
+    
+    form = ChatForm()
+    
+    
     return render(request,'chat/CreateChat.html',context={})
 
 @login_required
