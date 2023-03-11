@@ -16,7 +16,7 @@
             <p>{{username}}</p>
             <ul>
             {% for m in messages %}
-            <li>{{m.display_name}}: {{m.content}}</li>
+            {{m.sender}}: {{m.content}}</br>
             {% endfor %}
             </ul>
         </div>
