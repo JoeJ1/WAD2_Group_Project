@@ -38,7 +38,7 @@
           <main>
             <div class="container-fluid">
                 <div class="row row-tall" style = "background-image: url('static/images/no_words_logo.png')">
-                    <div class="col-md-2 my-col chat-col">
+                    <div class="col-md-2 my-col chat-col mh-100">
                         <h2 class="text-center" style="color:white;">
                             My Chats
                         </h2>
@@ -50,11 +50,11 @@
                             <a href="{% url 'chat:create' %}"><li class = "urlbuttons">Create Chat</li></a>
                           </ul>
                     </div>
-                    <div class="col-md-10 my-col content-col">
-                        <h2 class="text-left" style="margin-bottom:2rem">
+                    <div class="col-md-10 my-col content-col mh-100">
+                        <div class="alert alert-info" role="alert">
                             {% block content_title %}
                             {% endblock %}
-                        </h2>
+                        </div>
                         {% block body_block %}
                         {% endblock %}
                     </div>

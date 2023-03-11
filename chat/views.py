@@ -41,6 +41,7 @@ def chat(request, chat_name_slug):
         context_dict['messages'] = Message.objects.filter(chat=this_chat)
         context_dict['chat_name'] = this_chat.name
         context_dict['chat_slug_name'] = this_chat.slug
+        context_dict['this_username'] = UserProfile.objects.filter(user=request.user)[0].user.username
     except Chat.DoesNotExist:
         chat = None
     return render(request, 'chat/chat.html', context_dict)

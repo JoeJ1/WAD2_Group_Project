@@ -87,6 +87,7 @@ def create_chat(name,description,owner):
 if __name__ == '__main__':
     django.setup()
     if os.name != 'nt': # not on windows, i.e. no batch
+        os.system('pip install -r requirements.txt')
         for f in os.listdir('.'):
             if f.endswith('.sqlite3'):
                 os.remove(f)

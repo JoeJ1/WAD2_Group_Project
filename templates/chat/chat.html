@@ -8,31 +8,37 @@
 {% block includes_block %}
 {% endblock %}
 
+{% block content_title %}
+{{chat_name}}
+<div class="btn-group float-right" role="group" aria-label="Chat Buttons">
+  <button type="button" class="btn btn-primary">Members</button>
+  <button type="button" class="btn btn-primary">Files</button>
+  <button type="button" class="btn btn-primary" formaction="{% url 'chat:leave' chat_slug_name %}">Leave Chat</button>
+</div>
+{% endblock %}
 {% block body_block %}
+{{ this_username|json_script:"this-username" }}
 <body>
     <div class="row row-tall">
-        <div class="col">
-
-            <h1>{{chat_name}}</h1>
-
-            <ul>
-            <a href="#" class='urlbuttons'>View Members</a>
-            <a href="#" class='urlbuttons'>View Files</a>
-            <a href="{% url 'chat:leave' chat_slug_name %}" class='urlbuttons' onclick="return confirm('Are you sure you want to leave this chat?')">Leave Chat</a> 
-            <!--can add a pop up with UI later for leaving confirmations-->
-            </ul>
-
-            <p>{{username}}</p>
-
-            <ul>
+        <div class="col h-100 position-relative">
+            <div class="chat-message-list">
             {% for m in messages %}
-            {{m.sender}}: {{m.content}}</br>
+                <div class="message-containerw-auto mh-25 w-auto d-block"> 
+                {% if m.sender.user.username == this_username %}
+                    <div class="message float-right d-block">
+                {% else %}
+                    <div class="message float-left d-block">
+                {% endif %}
+                    {{m.sender}}: {{m.content}}
+                    </div><br>
+                </div>
             {% endfor %}
-            </ul>
-
+            </div>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Your message here" aria-label="Message" aria-describedby="button-addon2">
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2">Send</button>
+            </div>
         </div>
     </div>
-    <input id="chat-message-input" type="text"><br>
-    <input id="chat-message-submit" type="button" value="Send">
 </body>
 {% endblock %}
