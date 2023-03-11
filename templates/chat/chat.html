@@ -19,22 +19,23 @@
 {% block body_block %}
 {{ this_username|json_script:"this-username" }}
 <body>
-    <div class="row row-tall">
-        <div class="col h-100 position-relative">
+    <div class="row row-tall h-100">
+        <div class="col h-100">
             <div class="chat-message-list">
             {% for m in messages %}
-                <div class="message-containerw-auto mh-25 w-auto d-block"> 
                 {% if m.sender.user.username == this_username %}
-                    <div class="message float-right d-block">
+                <div class="message-container" style="display:flex; justify-content:end">
+                    <div class="message" style="float:right">
                 {% else %}
-                    <div class="message float-left d-block">
+                <div class="message-container" style="display:flex; justify-content:start">
+                    <div class="message" style="float:left">
                 {% endif %}
                     {{m.sender}}: {{m.content}}
-                    </div><br>
+                    </div>
                 </div>
             {% endfor %}
             </div>
-            <div class="input-group">
+            <div class="input-group mb-5 position-sticky">
               <input type="text" class="form-control" placeholder="Your message here" aria-label="Message" aria-describedby="button-addon2">
               <button class="btn btn-outline-secondary" type="button" id="button-addon2">Send</button>
             </div>
