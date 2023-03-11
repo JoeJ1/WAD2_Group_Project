@@ -5,6 +5,17 @@ from django.contrib.auth import authenticate, login, logout
 from chat.models import Chat, File, UserProfile, Message
 from chat.forms import UserForm, UserProfileForm
 
+@login_required
+def leave_group_chat(request, chat_name_slug):
+    try:
+        user_profile = UserProfile.objects.get(user=request.user)
+        chat = Chat.objects.get(slug=chat_name_slug)
+    except Chat.DoesNotExist:
+        chat = None
+    chat.users.remove(user_profile)
+    chat.save()
+    return redirect(reverse('chat:chat'))
+
 def get_user_chats(request):
     context_dict = {}
     try:
@@ -25,9 +36,13 @@ def get_user_chats(request):
 def chat(request, chat_name_slug):
     context_dict = {}
     context_dict['chats'] = Chat.objects.all()
-    this_chat = Chat.objects.filter(slug=chat_name_slug)[0]
-    context_dict['messages'] = Message.objects.filter(chat=this_chat)
-    context_dict['chat_name'] = this_chat.name
+    try:
+        this_chat = Chat.objects.get(slug=chat_name_slug)
+        context_dict['messages'] = Message.objects.filter(chat=this_chat)
+        context_dict['chat_name'] = this_chat.name
+        context_dict['chat_slug_name'] = this_chat.slug
+    except Chat.DoesNotExist:
+        chat = None
     return render(request, 'chat/chat.html', context_dict)
 
 def user_login(request):
@@ -77,6 +92,7 @@ def sign_up(request):
             profile.save()
 
             registered = True
+            return redirect(reverse('chat:login'))
         else:
             print(user_form.errors, profile_form.errors)
 
