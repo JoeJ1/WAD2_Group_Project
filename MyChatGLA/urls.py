@@ -21,6 +21,6 @@ from chat import views
 urlpatterns = [
     path('chat/', include('chat.urls')),
     path('admin/', admin.site.urls),
-    path('', lambda request: redirect('chat/')), # needs to redirect to main page if logged in
+    path('', lambda request: redirect('/chat/auth/login/'), name='login'), # needs to redirect to main page if logged in
     path('', include("allauth.urls")),
 ]
