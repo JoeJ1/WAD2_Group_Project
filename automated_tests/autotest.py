@@ -3,7 +3,19 @@ class BackendTest(TestCase):
   # Database & Database Interaction
 
   def test_user_authentication(self):
-    self.assertEqual(True, True)
+      self.client = Client()
+      self.user = User.objects.create_user(
+          username='testuser',
+          password='testpass'
+      )
+      # Log in the user
+      self.client.login(username='testuser', password='testpass')
+
+      # Check that the user is authenticated
+      response = self.client.get(reverse('home'))
+      self.assertEqual(response.status_code, 200)
+      self.assertContains(response, 'Welcome, testuser!')
+
 
   def test_display_correct_pages_if_owner_or_member(self):
     self.assertEqual(True, True)
