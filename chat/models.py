@@ -3,6 +3,8 @@ from django.db import models
 from django.contrib.auth.models import User as DjangoUser
 from django.template.defaultfilters import slugify
 from django.utils import timezone
+from allauth.account.signals import user_signed_up
+from django.dispatch import receiver
 
 USERNAME_LEN = 30
 DISPLAY_NAME_LEN = 50
@@ -55,4 +57,9 @@ class File(models.Model):
     def __str__(self):
         return self.name
 
-
+@receiver(user_signed_up, sender=DjangoUser)
+def user_signed_up(request, user, **kwargs):
+    print(user)
+    print(user.first_name)
+    u=UserProfile.objects.get_or_create(user=user)[0]
+    u.save()
