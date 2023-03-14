@@ -130,3 +130,6 @@ dmypy.json
 
 # MacOS
 .DS_Store
+
+# Migrations shouldn't be commited probably
+chat/migrations/*
