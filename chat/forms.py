@@ -24,7 +24,8 @@ class ChatForm(forms.ModelForm):
     description = forms.CharField(max_length=300, help_text="Please enter a description of the chat.") # far from finished but made a start 
     image = forms.ImageField(required=False)
     users = forms.ModelMultipleChoiceField(queryset=UserProfile.objects.all())
+    owner = forms.ModelChoiceField(queryset=UserProfile.objects.all())
 
     class Meta:
         model = Chat
-        fields = ('name', 'description', 'image', 'users')
+        fields = ('name', 'description', 'image', 'users', 'owner')

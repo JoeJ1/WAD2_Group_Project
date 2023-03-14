@@ -11,9 +11,9 @@
 {% block content_title %}
 {{chat_name}}
 <div class="btn-group float-right" role="group" aria-label="Chat Buttons">
-  <button type="button" class="btn btn-primary">Members</button>
-  <button type="button" class="btn btn-primary">Files</button>
-  <button type="button" class="btn btn-primary" formaction="{% url 'chat:leave' chat_slug_name %}">Leave Chat</button>
+  <a class="btn btn-primary">Members</a>
+  <a class="btn btn-primary">Files</a>
+  <a class="btn btn-primary" href="{% url 'chat:leave' chat_slug_name %}" onclick = "return confirm('Are you sure you want to leave?')">Leave Chat</a>
 </div>
 {% endblock %}
 {% block body_block %}

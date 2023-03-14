@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
@@ -109,11 +110,56 @@ def sign_up(request):
 
 @login_required
 def create_page(request):
+    context_dict = {}
+    user_profiles = UserProfile.objects.all()
+    usernames = [i.user.username for i in user_profiles]
+    context_dict['all_users'] = user_profiles
+    context_dict['usernames'] = json.dumps(usernames)
+    context_dict['current_user'] = json.dumps(request.user.username)
     
-    form = ChatForm()
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        description = request.POST.get('description')
+        users = request.POST.get('users')
+        print('Users', users)
+        # members_str = request.POST.get('users')
+        # members = json.loads(members_str)
+        
+        # print(name, description)
+        # print(members_str, type(members_str))
+        # print(members, type(members))
+        print(request.user)
+        user_profile = UserProfile.objects.get(user=request.user)
+        chat_form = ChatForm(request.POST, initial={'owner': user_profile, 'users':user_profile})
+        print('Chat: ', chat_form.is_valid())
+        user_list = []
+        # for i in user_profiles:
+        #     if i.user.username in members:
+        #         user_list.append(i)
+        # print(user_list)
+
+        if chat_form.is_valid():
+            print('valid')
+            chat = chat_form.save(commit=False)
+            
+            # member_list_json = request.POST.get('member_list')
+            # member_list = json.loads(member_list_json)
+            # print(member_list)
+            
+            # for user in user_list:
+            #     chat.users.add(user)
+            # chat.save()
+
+            return redirect('chat:chat_room', chat.id)
+        else:
+            print('here')
+            print(chat_form.errors)
+
+    else:
+        chat_form = ChatForm()
     
     
-    return render(request,'chat/CreateChat.html',context={})
+    return render(request,'chat/CreateChat.html',context=context_dict)
 
 @login_required
 def user_logout(request):

@@ -66,20 +66,14 @@ Create New Chat
 
 {% block body_block %}
 
+<form id="user_form" method="post" action="" enctype="multipart/form-data">
+{% csrf_token %}
 <div class="container-fluid p-2 g-2 box">
   <div class="row g-5 justify-content-center align-items-top myrows mb-3">
     <div class="col">
       <div class = "mycol">Members added
         <div>
-          <ul class = "lists" style = "list-style-type: none; margin:0;padding:0; height:12rem;">
-            <li>David</li>
-            <li>David</li>
-            <li>David</li>
-            <li>David</li>
-            <li>David</li>
-            <li>David</li>
-            <li>David</li>
-          </ul>
+          <ul class = "lists" id="memberList" style = "list-style-type: none; margin:0;padding:0; height:12rem;"></ul>
         </div>
       </div>
       </div>
@@ -88,45 +82,99 @@ Create New Chat
         <div class = "mycol" style="margin-bottom:10px;">
           <div class="mb-3">
           <label for="ChatName" class="form-label">Chat Name</label>
-          <input type="text" class="form-control" id="ChatName" placeholder="Enter Chat Name">
+          <input type="text" class="form-control" id="ChatName" name="name" placeholder="Enter Chat Name">
         </div>
       </div>
         <div class = "mycol">
           <div class="mb-3">
-            <label for="Chat-title" class="form-label">Chat Description</label>
-            <input type="text" class="form-control" id="title" placeholder="Enter Chat Description">
+            <label for="Chat-title" class="form-label" >Chat Description</label>
+            <input type="text" class="form-control" name="description" id="title" placeholder="Enter Chat Description">
           </div>
         </div>
       </div>
     </div>
   </div>
+
+
   <div class="row g-6 justify-content-center align-items-top myrows mb-3">
     <div class="col mb-3">
       <div class="mycol">
         <label for="ChatName" class="form-label">Add Member</label>
         <div class="input-group">
-          <input type="text" class="form-control" id="title" placeholder="Enter Member Name">
-          {% comment %} <select class="form-control" id="inputGroupSelect04" aria-label="Example select with button addon" style = "padding-right: 100px;">
-            <option selected>Choose which Member</option>
-            <option value="1">query database</option>
-            <option value="2">query database</option>
-            <option value="3">query database</option>
-          </select> {% endcomment %}
+          <input type="text" class="form-control" id="memberInput" placeholder="Enter Member Name">
         </div>
-        <button class="btn btn-light urlbuttons" type="button">Add</button>
+
+        <button type="button" class="btn btn-primary" id="addMemberButton">Add</button>
+        </div>
+        
+        {% comment %} <input type="hidden" id="memberListInput" name="users" value="{{ request.user.userprofile.id }}"> {% endcomment %}
+        <input type="hidden" name="owner" value="{{ request.user.userprofile.id }}"> 
+
+        <script>
+          const memberInput = document.getElementById("memberInput");
+          const addMemberButton = document.getElementById("addMemberButton");
+          const memberListInput = document.getElementById("memberListInput");
+          const members = [];
+          
+          var usernames = JSON.parse('{{ usernames|escapejs }}');
+          const currentUser = JSON.parse('{{ current_user|escapejs }}')
+          addMemberButton.addEventListener("click", function() {
+            const memberName = memberInput.value;
+            if (memberName !== "") {
+              const user = usernames.find(u => u === memberName);
+              if (user) {
+                if (members.includes(user)){
+                  alert(`User ${memberName} is already in the chat.`);
+                } 
+                else if (user === currentUser) {
+                  alert(`You cannot add yourself to the chat.`);
+                }
+                else {
+                  members.push(user);
+                  memberInput.value = "";
+                  renderMembers();
+                  updateMemberListInput();
+                }
+            } else {
+                alert(`User ${memberName} not found.`);
+            }
+            }
+          });
+        
+          function renderMembers() {
+            memberList.innerHTML = "";
+            for (let i = 0; i < members.length; i++) {
+              const li = document.createElement("li");
+              li.textContent = members[i];
+              memberList.appendChild(li);
+            }
+          }
+
+          function updateMemberListInput() {
+            memberListInput.value = JSON.stringify(members);
+          }
+        </script>
+        {% for user in all_users %}
+          {% if userprofile.user.username in members %}
+            <input type="hidden" name="users" value="{{ user.id }}">
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
+
+    {% comment %} <input class="form-control form-control-lg" type = "hidden" name="image" id="UploadImage" type="file"> {% endcomment %}
     <div class="col">
       <div class = "mycol">
-      <label for="UploadImage" class="form-label">Upload Background Image</label>
-      <input class="form-control form-control-lg" id="UploadImage" type="file">
+        <label for="UploadImage" class="form-label">Upload Background Image</label>
+        <input class="form-control form-control-lg" name="image" id="UploadImage" type="file">
+      </div>
     </div>
-  </div>
   </div>
   <div class="row justify-content-center align-items-top myrows mb-3">
     <div class="col-1 justify-content-center align-items-center">
-      <button class="btn btn-light urlbuttons" type="button" style="position: relative;">Create</button>
+      <button class="btn btn-light urlbuttons" type="submit" style="position: relative;">Create</button>
     </div>
   </div>
 </div>
+</form>
 {% endblock %}
