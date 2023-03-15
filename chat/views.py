@@ -75,10 +75,12 @@ def chat(request, chat_name_slug):
     context_dict['chats'] = Chat.objects.all()
     try:
         this_chat = Chat.objects.get(slug=chat_name_slug)
+        owner = this_chat.owner
         context_dict['messages'] = Message.objects.filter(chat=this_chat)
+        context_dict['owner'] = owner
         context_dict['chat_name'] = this_chat.name
         context_dict['chat_name_slug'] = this_chat.slug
-        context_dict['current_user'] = UserProfile.objects.filter(user=request.user)
+        context_dict['current_user'] = UserProfile.objects.filter(user=request.user).get()
         context_dict['this_username'] = UserProfile.objects.filter(user=request.user)[0].user.username
     except Chat.DoesNotExist:
         chat = None
