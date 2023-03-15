@@ -54,6 +54,15 @@ def members(request, chat_name_slug):
     return render(request, 'chat/members.html', context_dict)
 
 @login_required
+def delete_group_chat(request, chat_name_slug):
+    try:
+        chat = Chat.objects.get(slug=chat_name_slug)
+    except Chat.DoesNotExist:
+        chat = None
+    chat.delete()
+    return redirect(reverse('chat:chat')) 
+
+@login_required
 def files(request, chat_name_slug):
     context_dict = {}
     try:

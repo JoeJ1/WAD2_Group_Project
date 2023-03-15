@@ -17,5 +17,6 @@ urlpatterns = [
     path('chatroom/<slug:chat_name_slug>/leave', views.leave_group_chat, name='leave'),
     path('chatroom/<slug:chat_name_slug>/members', views.members, name='members'),
     path('chatroom/<slug:chat_name_slug>/files', views.files, name='files'),
+    path('chatroom/<slug:chat_name_slug>/delete', views.delete_group_chat, name='delete'),
 
 ]
