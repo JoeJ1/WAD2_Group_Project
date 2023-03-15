@@ -82,13 +82,13 @@ Create New Chat
         <div class = "mycol" style="margin-bottom:10px;">
           <div class="mb-3">
           <label for="ChatName" class="form-label">Chat Name</label>
-          <input type="text" class="form-control" id="ChatName" name="name" placeholder="Enter Chat Name">
+          <input type="text" class="form-control" id="ChatName" name="name" placeholder="Enter Chat Name" required>
         </div>
       </div>
         <div class = "mycol">
           <div class="mb-3">
             <label for="Chat-title" class="form-label" >Chat Description</label>
-            <input type="text" class="form-control" name="description" id="title" placeholder="Enter Chat Description">
+            <input type="text" class="form-control" name="description" id="title" placeholder="Enter Chat Description" required>
           </div>
         </div>
       </div>
@@ -107,7 +107,10 @@ Create New Chat
         <button type="button" class="btn btn-primary" id="addMemberButton">Add</button>
         </div>
         
-        {% comment %} <input type="hidden" id="memberListInput" name="users" value="{{ request.user.userprofile.id }}"> {% endcomment %}
+        <input type="hidden" id="memberListInput" name="user_list" value="">
+        {% for user in all_users %}
+            <input type="hidden" name="users" value="{{ user.id }}">
+        {% endfor %} 
         <input type="hidden" name="owner" value="{{ request.user.userprofile.id }}"> 
 
         <script>
@@ -154,15 +157,9 @@ Create New Chat
             memberListInput.value = JSON.stringify(members);
           }
         </script>
-        {% for user in all_users %}
-          {% if userprofile.user.username in members %}
-            <input type="hidden" name="users" value="{{ user.id }}">
-          {% endif %}
-        {% endfor %}
+
       </div>
     </div>
-
-    {% comment %} <input class="form-control form-control-lg" type = "hidden" name="image" id="UploadImage" type="file"> {% endcomment %}
     <div class="col">
       <div class = "mycol">
         <label for="UploadImage" class="form-label">Upload Background Image</label>
