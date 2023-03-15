@@ -47,6 +47,7 @@
   color:inherit; !important;
   text-decoration:none; !important;
   line-height: inherit; !important;
+  margin-right: 0.7rem;
 }
 
 .close-button:hover{
@@ -110,13 +111,10 @@ Create New Chat
     <div class="col mb-3">
       <div class="mycol">
         <label for="ChatName" class="form-label">Add Member</label>
-        <div class="input-group">
-          <input type="text" class="form-control" id="memberInput" placeholder="Enter Member Name">
+        <div class="input-group mb-3">
+          <input type="text" id="memberInput" class="form-control" placeholder="Enter Member Name">
+          <button class="btn btn-primary" type="button" id="addMemberButton">Add</button>
         </div>
-
-        <button type="button" class="btn btn-primary" id="addMemberButton">Add</button>
-        </div>
-        
         <input type="hidden" id="memberListInput" name="user_list" value="">
         {% for user in all_users %}
             <input type="hidden" name="users" value="{{ user.id }}">
