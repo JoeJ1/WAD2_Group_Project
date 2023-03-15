@@ -34,6 +34,22 @@ def get_user_chats(request):
     return context_dict
 
 @login_required
+def members(request, chat_name_slug):
+    context_dict = {}
+    try:
+        chat = Chat.objects.get(slug=chat_name_slug)
+        chat_members = Chat.objects.get(slug=chat_name_slug).users.all()
+    except:
+        chat = None
+        chat_members = None
+    print(chat_members)
+    print('----------------------------')
+    context_dict['chat_name'] = chat
+    context_dict['chat_members'] = chat_members
+
+    return render(request, 'chat/members.html', context_dict)
+
+@login_required
 def chat(request, chat_name_slug):
     context_dict = {}
     context_dict['chats'] = Chat.objects.all()

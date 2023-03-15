@@ -11,8 +11,8 @@
 {% block content_title %}
 {{chat_name}}
 <div class="btn-group float-right" role="group" aria-label="Chat Buttons">
-  <a class="btn btn-primary">Members</a>
-  <a class="btn btn-primary">Files</a>
+  <a class="btn btn-primary" href = "{% url 'chat:members' chat_slug_name %}">Members</a>
+  <a class="btn btn-primary" href="#">Files</a>
   <a class="btn btn-primary" href="{% url 'chat:leave' chat_slug_name %}" onclick = "return confirm('Are you sure you want to leave?')">Leave Chat</a>
 </div>
 {% endblock %}

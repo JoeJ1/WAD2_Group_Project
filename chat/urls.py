@@ -15,4 +15,5 @@ urlpatterns = [
     path('test/', views.test, name='test'),
     path('chatroom/<slug:chat_name_slug>/', views.chat, name='chatroom'),
     path('chatroom/<slug:chat_name_slug>/leave', views.leave_group_chat, name='leave'),
+    path('chatroom/<slug:chat_name_slug>/members', views.members, name='members'),
 ]

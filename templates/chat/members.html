@@ -6,8 +6,14 @@
 {% endblock %}
 
 {% block includes_block %}
+{% endblock %}
 
+{% block content_title %}
+{{chat_name}} - Members
 {% endblock %}
 
 {% block body_block %}
+    {% for user in chat_members %}
+        Username: {{ user }} Display Name: {{user.display_name}}</br>
+    {% endfor %}
 {% endblock %}
