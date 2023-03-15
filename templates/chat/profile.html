@@ -2,10 +2,15 @@
 {% load staticfiles %}
 
 {% block title_block %}
-Profile
+    Profile
 {% endblock %}
 
 {% block includes_block %}
+{% endblock %}
+
+{% block content_title %}
+My Profile - {{current_user}}
+
 {% endblock %}
 
 {% block body_block %}

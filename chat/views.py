@@ -196,4 +196,9 @@ def test(request):
 
 @login_required
 def profile(request):
-    return render(request,'chat/profile.html',context={})
+    context_dict = {}
+    try:
+        context_dict['current_user'] = UserProfile.objects.filter(user=request.user).get()
+    except:
+        context_dict['current_user'] = None
+    return render(request,'chat/profile.html',context=context_dict)
