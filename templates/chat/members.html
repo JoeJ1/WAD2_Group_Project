@@ -26,6 +26,18 @@
 {% endblock %}
 
 {% block body_block %}
+
+<label for="ChatName" class="form-label">Add Member</label>
+<div class="input-group">
+  <input type="text" class="form-control" id="memberInput" placeholder="Enter Member Name">
+</div>
+<button type="button" id="addMemberButton" class="btn btn-primary" onclick="addMember()" id="addMemberButton">Add</button>
+</br>
+</br>
+
+
+
+
     <a href="#" class = "urlbuttons">{{owner}}</a> </br>
     Owner: {{ owner }} </br> Display Name: {{owner.display_name}}</br></br>
     {% for user in chat_members %}
