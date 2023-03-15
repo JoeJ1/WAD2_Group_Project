@@ -10,11 +10,24 @@
 
 {% block content_title %}
 {{chat_name}} - Members
+{% if current_user == owner %}
+<div class="btn-group float-right" role="group" aria-label="Chat Buttons">
+    <a class="btn btn-primary" href="{% url 'chat:members' chat_name_slug %}">Members</a>
+    <a class="btn btn-primary" href="{% url 'chat:files' chat_name_slug %}">Files</a>
+    <a class="btn btn-primary" href="#" onclick = "return confirm('Are you sure you want to delete?')">Delete Chat</a>
+</div>
+{% else %}
 <div class="btn-group float-right" role="group" aria-label="Chat Buttons">
     <a class="btn btn-primary" href="{% url 'chat:members' chat_name_slug %}">Members</a>
     <a class="btn btn-primary" href="{% url 'chat:files' chat_name_slug %}">Files</a>
     <a class="btn btn-primary" href="{% url 'chat:leave' chat_name_slug %}" onclick = "return confirm('Are you sure you want to leave?')">Leave Chat</a>
 </div>
+{% endif %}
+<!-- <div class="btn-group float-right" role="group" aria-label="Chat Buttons">
+    <a class="btn btn-primary" href="{% url 'chat:members' chat_name_slug %}">Members</a>
+    <a class="btn btn-primary" href="{% url 'chat:files' chat_name_slug %}">Files</a>
+    <a class="btn btn-primary" href="{% url 'chat:leave' chat_name_slug %}" onclick = "return confirm('Are you sure you want to leave?')">Leave Chat</a>
+</div> -->
 {% endblock %}
 
 {% block body_block %}

@@ -40,6 +40,7 @@ def members(request, chat_name_slug):
         chat = Chat.objects.get(slug=chat_name_slug)
         chat_members = Chat.objects.get(slug=chat_name_slug).users.all()
         chat_owner = chat.owner
+        user = UserProfile.objects.filter(user=request.user)
     except:
         chat = None
         chat_members = None
@@ -48,6 +49,8 @@ def members(request, chat_name_slug):
     context_dict['chat_members'] = chat_members
     context_dict['chat_name_slug'] = chat_name_slug
     context_dict['owner'] = chat_owner
+    context_dict['current_user'] = user.get()
+    print(user.get(), chat_owner)
     return render(request, 'chat/members.html', context_dict)
 
 @login_required
@@ -55,10 +58,15 @@ def files(request, chat_name_slug):
     context_dict = {}
     try:
         chat = Chat.objects.get(slug=chat_name_slug)
+        user = UserProfile.objects.filter(user=request.user)
+        chat_owner = chat.owner
     except:
         chat = None
+        user = None
     context_dict['chat_name_slug'] = chat_name_slug
     context_dict['chat_name'] = chat
+    context_dict['current_user'] = user.get()
+    context_dict['owner'] = chat_owner
     return render(request, 'chat/files.html', context_dict)
 
 @login_required
@@ -70,6 +78,7 @@ def chat(request, chat_name_slug):
         context_dict['messages'] = Message.objects.filter(chat=this_chat)
         context_dict['chat_name'] = this_chat.name
         context_dict['chat_name_slug'] = this_chat.slug
+        context_dict['current_user'] = UserProfile.objects.filter(user=request.user)
         context_dict['this_username'] = UserProfile.objects.filter(user=request.user)[0].user.username
     except Chat.DoesNotExist:
         chat = None
