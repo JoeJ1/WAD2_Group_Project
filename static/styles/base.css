@@ -10,6 +10,16 @@
     height:100vh;
 }
 
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+  display: inline;
+  position:static;
+}
+
 .floating {
     box-shadow:  8px 8px 30px hsla(120,0%,50%,0.5),
              -8px -8px 30px hsla(120,0%,100%,0.5);
@@ -63,6 +73,17 @@
 .line{
     border-bottom: 1px solid #ffff;
     display: block;
+}
+
+.profile-chip{
+    border-radius: 1rem;
+    background: var(--main-col);
+    border: none;
+    color: var(--text-col);
+    padding:0.1rem;
+    padding-left: 2rem;
+    box-shadow:  4px 4px 15px hsla(120,0%,50%,0.2);
+    margin-bottom:0.5rem;
 }
 
 button {

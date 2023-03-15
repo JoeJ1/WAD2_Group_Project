@@ -42,6 +42,16 @@
     height:100px;
     overflow:hidden; overflow-y:scroll;
 }
+
+.close-button{
+  color:inherit; !important;
+  text-decoration:none; !important;
+  line-height: inherit; !important;
+}
+
+.close-button:hover{
+  cursor:pointer;
+}
 .Memebers-added { grid-area: Memebers-added; }
 
 .Chat-title { grid-area: Chat-title; }
@@ -143,12 +153,23 @@ Create New Chat
             }
             }
           });
-        
+          
           function renderMembers() {
             memberList.innerHTML = "";
             for (let i = 0; i < members.length; i++) {
               const li = document.createElement("li");
+              const close = document.createElement("a");
+              close.textContent="close";
+              close.classList.add('material-symbols-outlined');
+              close.classList.add("float-right");
+              close.classList.add("close-button");
+              close.onclick=function(){
+                  members.splice(i,1);
+                  renderMembers();
+              }
               li.textContent = members[i];
+              li.classList.add('profile-chip');
+              li.appendChild(close);
               memberList.appendChild(li);
             }
           }
