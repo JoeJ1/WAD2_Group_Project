@@ -62,4 +62,5 @@ def user_signed_up(request, user, **kwargs):
     print(user)
     print(user.first_name)
     u=UserProfile.objects.get_or_create(user=user)[0]
+    u.display_name=user.first_name+user.last_name
     u.save()
