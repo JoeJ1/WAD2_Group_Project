@@ -51,6 +51,7 @@ def members(request, chat_name_slug):
         chat_members = Chat.objects.get(slug=chat_name_slug).users.all()
         chat_owner = chat.owner
         user = UserProfile.objects.filter(user=request.user)
+        # chat_image = chat.image #could someone add this to data base
     except:
         chat = None
         chat_members = None
