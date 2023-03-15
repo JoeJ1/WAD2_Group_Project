@@ -6,12 +6,47 @@
 {% endblock %}
 
 {% block includes_block %}
+<style>
+    .box-size{
+  height:fit-content;
+  width:55rem;
+  border:2px solid #91b1f7;
+  border-radius: 20px;
+  padding:15px;
+  background-color: #91b1f7;
+  color:#fff;
+}
+</style>
 {% endblock %}
 
 {% block content_title %}
 My Profile - {{current_user}}
-
 {% endblock %}
 
 {% block body_block %}
+<div class="container-fluid box-size">
+    <div class="row justify-content-center align-items-center g-2">
+        <div class="col"><img src="{% static 'images/classhat.jpg' %}" class="img-fluid rounded-top" alt="" height="auto" width = "auto"></div>
+        <div class="col">
+            <ul>
+                <li>Name</li>
+                <li>Display name</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row justify-content-center align-items-center g-2">
+        <div class="col">
+            
+              <label for="" class="form-label">Change Display Name</label>
+              <input type="text" class="form-control" id="memberInput" placeholder="Enter New Display name">
+
+        <div class="col">
+        <label for="" class="form-label">Delete Account</label>
+        <br>
+        <div class="btn-group" role="group" data-bs-toggle="buttons">
+            <button type="submit" onclick="return confirm('Are You sure You want to Delete Your Account?')" class="btn btn-primary">Delete Account</button>
+        </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

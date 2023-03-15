@@ -20,7 +20,13 @@
             {% for chat in chats %}
             <a href="{% url 'chat:chatroom' chat.slug %}">
               <div class = "grid-child-myclassicon">
-                <div class = "imagebackground"><img  class = "imgchat" src = "{% static 'images/classhat.jpg' %}" alt = "teacher hat"></div>
+                <div class = "imagebackground">
+                  {% if imageBackground %}
+                  <img  class = "imgchat" src = "{{ imageBackground }}" alt = "chat image">
+                  {% else %}
+                  <img  class = "imgchat" src = "{% static 'images/classhat.jpg' %}" alt = "teacher hat">
+                  {% endif %}
+                </div>
                 <div class = classname>{{ chat.name }}</div> 
               </div>
             </a>
