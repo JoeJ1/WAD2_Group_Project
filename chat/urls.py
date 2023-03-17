@@ -20,3 +20,5 @@ urlpatterns = [
     path('chatroom/<slug:chat_name_slug>/delete', views.delete_group_chat, name='delete'),
 
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

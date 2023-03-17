@@ -6,29 +6,31 @@ import django
 def populate():
 
 
-    users = {"Reuben":add_user('Reuben_C','HelloTEST123456','Reuben','/media/logo.png'),
+    users = {"Reuben":add_user('Reuben_C','HelloTEST123456','Reuben','/uploadpics/logo.png'),
 
-        "Onur":add_user('Onur_H','HelloTEST123456','Onur','/media/logo.png'),
+        "Onur":add_user('Onur_H','HelloTEST123456','Onur','/uploadpics/logo.png'),
 
-        "Joe":add_user('Joe_F','HelloTEST123456','Joe','/media/logo.png'),
+        "Joe":add_user('Joe_F','HelloTEST123456','Joe','/uploadpics/logo.png'),
 
-        "Lewis":add_user('Lewis_S','HelloTEST123456','Lewis','/media/logo.png'),
+        "Lewis":add_user('Lewis_S','HelloTEST123456','Lewis','/uploadpics/logo.png'),
 
-        "David":add_user('David_B','HelloTEST123456','David','/media/logo.png'),
+        "David":add_user('David_B','HelloTEST123456','David','/uploadpics/logo.png'),
 
-        "James":add_user('James_T','HelloTEST123456','James','/media/logo.png')}
+        "James":add_user('James_T','HelloTEST123456','James','/uploadpics/logo.png')}
 
 
     chats= [
         {"name":'Wad_Buds',
          "description":'Discussion group for WAD labs',
          "users":'',
-         "owner": users["Onur"]},
+         "owner": users["Onur"],
+         "image":'/uploadpics/rango.jpg'},
 
         {"name":'The Brotherhood',
          "description":'Secret cult meeting',
          "users":'',
-         "owner": users["Joe"]}
+         "owner": users["Joe"],
+         "image":'/uploadpics/rango.jpg'}
     ]
 
     messages = [
@@ -53,7 +55,7 @@ def populate():
     ]
 
     for chat in chats:
-        c = create_chat(chat['name'],chat['description'],chat['owner'])
+        c = create_chat(chat['name'],chat['description'],chat['owner'], chat['image'])
         for user in users:
             c.users.add(users[user])
 
@@ -76,16 +78,16 @@ def add_message(sender_username, chat_name, content):
     m.save()
     return m
 
-def create_chat(name,description,owner):
-    c = Chat.objects.get_or_create(name=name,description=description,owner=owner)[0]
+def create_chat(name,description,owner,image):
+    c = Chat.objects.get_or_create(name=name,description=description,owner=owner, image=image)[0]
     c.save()
     return c
 
 #def create_message()
 
 if __name__ == '__main__':
-    django.setup()
     os.system('pip install -r requirements.txt')
+    django.setup()
     for f in os.listdir('.'):
         if f.endswith('.sqlite3'):
             os.remove(f)
@@ -100,3 +102,14 @@ if __name__ == '__main__':
     from django.template.defaultfilters import slugify
     populate()
     print("DB populated")
+
+
+    from django.contrib.sites.models import Site
+    from allauth.socialaccount.models import SocialApp
+    from allauth.socialaccount.providers.google  import provider
+    obj = Site.objects.get(id=1)
+    obj.domain="http://127.0.0.1:8000"
+    obj.name="http://127.0.0.1:8000"
+    obj.save()
+    socialApp = SocialApp.objects.create(name = "GroupProject", client_id="992328428322-5dabhp72ve3ot8slfrgdu3t6hcn0775f.apps.googleusercontent.com", secret="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")
+    socialApp.sites.set([obj])
