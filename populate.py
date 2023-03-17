@@ -102,3 +102,14 @@ if __name__ == '__main__':
     from django.template.defaultfilters import slugify
     populate()
     print("DB populated")
+
+
+    from django.contrib.sites.models import Site
+    from allauth.socialaccount.models import SocialApp
+    from allauth.socialaccount.providers.google  import provider
+    obj = Site.objects.get(id=1)
+    obj.domain="http://127.0.0.1:8000"
+    obj.name="http://127.0.0.1:8000"
+    obj.save()
+    socialApp = SocialApp.objects.create(name = "GroupProject", client_id="992328428322-5dabhp72ve3ot8slfrgdu3t6hcn0775f.apps.googleusercontent.com", secret="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")
+    socialApp.sites.set([obj])
