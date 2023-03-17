@@ -138,10 +138,8 @@ def send_message(request):
 def get_messages(request):
     chat_slug = request.GET['chat_slug']
     messages = Messages.objects.filter(Chat.objects.filter(slug=chat_slug)[0])
-    messages_dict = {'time_stamp':m.timestamp for m in messages,
-                     'sender':m.sender for m in messages,
-                     'content':m.content for m in messages}
-    return HttpResponse(json.dumps(messages_dict))
+    messages_list = [{'time_stamp':m.timestamp, 'sender':m.sender, 'content':m.content} for m in messages]
+    return HttpResponse(json.dumps(messages_list))
 
 def sign_up(request):
     registered = False
