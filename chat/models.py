@@ -25,6 +25,7 @@ class Chat(models.Model):
     users = models.ManyToManyField(UserProfile, related_name="chats")
     owner = models.ForeignKey(UserProfile, on_delete = models.CASCADE, related_name= 'chats_owned')
     slug = models.SlugField(unique=True)
+    image = models.ImageField(upload_to = 'profile_images', blank=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
