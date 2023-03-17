@@ -54,6 +54,24 @@ def populate():
          'content':'19579825985198'},
     ]
 
+    files = [
+        {"name":'TestFile1',
+         "data":'/uploadpics/test/rango.jpg',
+         "chat":'Wad_Buds'},
+        {"name":'TestFile1',
+         "data":'/uploadpics/logo.jpg',
+         "chat":'Wad_Buds'},
+        {"name":"TestFile2",
+         "data":'/uploadpics/rango.jpg',
+         "chat":'Wad_Buds'},
+        {"name": "TestFile1",
+         "data": '/uploadpics/logo.jpg',
+         "chat": 'The Brotherhood'},
+        {"name": "TestFile5",
+         "data": '/uploadpics/rango.jpg',
+         "chat": 'The Brotherhood'}
+    ]
+
     for chat in chats:
         c = create_chat(chat['name'],chat['description'],chat['owner'], chat['image'])
         for user in users:
@@ -62,6 +80,16 @@ def populate():
     for message in messages:
         add_message(message['sender'],message['chat'],message['content'])
 
+    for file in files:
+        add_file(file['data'],file['chat'])
+    #chat = Chat.objects.filter(name = "Wad_Buds")[0]
+    #f = File.objects.get_or_create(name="Hello", data="/uploadpics/logo.png", chat=chat)[0]
+    #f.save()
+def add_file(data,chat_name):
+    chat = Chat.objects.filter(name = chat_name)[0]
+    f = File.objects.get_or_create( data = data, chat = chat)[0]
+    f.save()
+    return f
 def add_user(username,password,display_name,picture):
     try:
         user_temp = User.objects.create_user(username,password=password)
@@ -100,16 +128,15 @@ if __name__ == '__main__':
     from chat.models import UserProfile, Chat, Message, File
     from django.contrib.auth.models import User
     from django.template.defaultfilters import slugify
-    populate()
-    print("DB populated")
-
-
     from django.contrib.sites.models import Site
     from allauth.socialaccount.models import SocialApp
-    from allauth.socialaccount.providers.google  import provider
+    from allauth.socialaccount.providers.google import provider
+    populate()
+    print("DB populated")
     obj = Site.objects.get(id=1)
     obj.domain="http://127.0.0.1:8000"
     obj.name="http://127.0.0.1:8000"
     obj.save()
     socialApp = SocialApp.objects.create(name = "GroupProject", client_id="992328428322-5dabhp72ve3ot8slfrgdu3t6hcn0775f.apps.googleusercontent.com", secret="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")
     socialApp.sites.set([obj])
+
