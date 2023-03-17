@@ -50,13 +50,16 @@ class Message(models.Model):
 
 class File(models.Model):
     ID = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=256) # Max file name length on windows
-    #expiry = models.DateTimeField('expiry')#Do we need an expiry? we could just delete when chat is deleted
-    data = models.FileField(upload_to = 'chat_files') #change upload_to
+    name = models.CharField(max_length=256)
+    data = models.FileField(upload_to = 'chat_files')
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
+
+    def save(self,*args,**kwargs):
+        self.name = self.data.name
+        super(File,self).save(*args,**kwargs)
 
 @receiver(user_signed_up, sender=DjangoUser)
 def user_signed_up(request, user, **kwargs):

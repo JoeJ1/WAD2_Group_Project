@@ -38,7 +38,7 @@
                 <div class="message-container" style="display:flex; justify-content:start">
                     <div class="message" style="float:left">
                 {% endif %}
-                    {{m.sender}}: {{m.content}}
+                    {{m.sender.display_name}}: {{m.content}}
                     </div>
                 </div>
             {% endfor %}
