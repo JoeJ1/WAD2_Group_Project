@@ -7,6 +7,7 @@
 
 {% block includes_block %}
 <link rel="stylesheet" href="{% static 'styles/mainpage.css' %}">
+<link rel="stylesheet" href="{% static 'styles/members.css' %}">
 {% endblock %}
 
 {% block content_title %}
@@ -28,22 +29,35 @@
 
 {% block body_block %}
 
-<div class="container-fluid">
-    <div class="row justify-content-center align-items-center g-2">
-        <div class = "col"><label for="ChatName" class="form-label">Add Member</label>
-            <div class="input-group">
-              <input type="text" class="form-control" id="memberInput" placeholder="Enter Member Name">
+<div style="margin-right: 5rem;">
+    <div class="container-fluid outerbox">
+        <div class="row justify-content-center align-items-top g-2">
+            <div class = "col colpadding">
+                <div class="membercol">
+                    <label for="ChatName" class="form-label">Add Member</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="memberInput" placeholder="Enter Member Name">
+                    </div>
+                    <button type="button" id="addMemberButton" class="btn btn-primary" onclick="addMember()" id="addMemberButton">Add</button>
+                </div>
             </div>
-            <button type="button" id="addMemberButton" class="btn btn-primary" onclick="addMember()" id="addMemberButton">Add</button></div>
-        <div class="col">
-            Owner: {{ owner }} </br> Display Name: {{owner.display_name}}</br></br>
-        {% for user in chat_members %}
-            {% if user != owner %}
-                Username: {{ user }} </br> Display Name: {{user.display_name}}</br></br>
-            {% endif %}
-        {% endfor %}
+
+
+            <div class="col colpadding">
+                <div class="membercol">
+
+                    <h3>Owner: </h3>{{ owner }}, Display Name: {{owner.display_name}}</br></br>
+                    <h5>Members </h5>
+                    <div class = "scrollable">
+                    {% for user in chat_members %}
+                        {% if user != owner %}
+                            Username: {{ user }}, Display Name: {{user.display_name}}</br></br>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
 </div>
 {% endblock %}
