@@ -42,6 +42,17 @@
     height:100px;
     overflow:hidden; overflow-y:scroll;
 }
+
+.close-button{
+  color:inherit; !important;
+  text-decoration:none; !important;
+  line-height: inherit; !important;
+  margin-right: 0.7rem;
+}
+
+.close-button:hover{
+  cursor:pointer;
+}
 .Memebers-added { grid-area: Memebers-added; }
 
 .Chat-title { grid-area: Chat-title; }
@@ -100,13 +111,10 @@ Create New Chat
     <div class="col mb-3">
       <div class="mycol">
         <label for="ChatName" class="form-label">Add Member</label>
-        <div class="input-group">
-          <input type="text" class="form-control" id="memberInput" placeholder="Enter Member Name">
+        <div class="input-group mb-3">
+          <input type="text" id="memberInput" class="form-control" placeholder="Enter Member Name">
+          <button class="btn btn-primary" type="button" id="addMemberButton">Add</button>
         </div>
-
-        <button type="button" class="btn btn-primary" id="addMemberButton">Add</button>
-        </div>
-        
         <input type="hidden" id="memberListInput" name="user_list" value="">
         {% for user in all_users %}
             <input type="hidden" name="users" value="{{ user.id }}">
@@ -143,12 +151,23 @@ Create New Chat
             }
             }
           });
-        
+          
           function renderMembers() {
             memberList.innerHTML = "";
             for (let i = 0; i < members.length; i++) {
               const li = document.createElement("li");
+              const close = document.createElement("a");
+              close.textContent="close";
+              close.classList.add('material-symbols-outlined');
+              close.classList.add("float-right");
+              close.classList.add("close-button");
+              close.onclick=function(){
+                  members.splice(i,1);
+                  renderMembers();
+              }
               li.textContent = members[i];
+              li.classList.add('profile-chip');
+              li.appendChild(close);
               memberList.appendChild(li);
             }
           }

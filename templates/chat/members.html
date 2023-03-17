@@ -28,6 +28,7 @@
 
 {% block body_block %}
 
+<<<<<<< HEAD
 <label for="ChatName" class="form-label">Add Member</label>
 <div class="input-group">
   <input type="text" class="form-control" id="memberInput" placeholder="Enter Member Name">
@@ -50,6 +51,17 @@
 
 </div>
 
+=======
+{% if current_user == owner %}
+    <label for="ChatName" class="form-label">Add Member</label>
+    <div class="input-group">
+    <input type="text" class="form-control" id="memberInput" placeholder="Enter Member Name">
+    </div>
+    <button type="button" id="addMemberButton" class="btn btn-primary" onclick="addMember()" id="addMemberButton">Add</button>
+    </br>
+    </br>
+{% endif %}
+>>>>>>> 35eb31b3e241c758a8050c7f2d7124a4aea7f77c
 
     <a href="#" class = "urlbuttons">{{owner}}</a> </br>
     Owner: {{ owner }} </br> Display Name: {{owner.display_name}}</br></br>

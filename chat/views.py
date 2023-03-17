@@ -17,6 +17,15 @@ def leave_group_chat(request, chat_name_slug):
     chat.save()
     return redirect(reverse('chat:chat'))
 
+@login_required
+def delete_account(request):
+    try:
+        user = UserProfile.objects.get(user=request.user)
+    except UserProfile.DoesNotExist:
+        user = None
+    user.delete()
+    return redirect(reverse('chat:signup'))
+
 def get_user_chats(request):
     context_dict = {}
     try:
