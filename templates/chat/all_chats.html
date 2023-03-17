@@ -1,15 +1,21 @@
-<!DOCTYPE>
-
+<!DOCTYPE html>
 {% if chats %}
     {% for chat in chats %}
-        {% if chat == current_chat %}
-            <strong>
-                <a href="{% url 'chat:chatroom' chat.slug %}"><li class = "urlbuttons">{{ chat.name }}</li></a>
-            </strong>
+        {% if chat.name == chat_name %}
+            <a href="{% url 'chat:chatroom' chat.slug%}" class="list-group-item list-group-item-action active">
         {% else %}
-            <a href="{% url 'chat:chatroom' chat.slug %}"><li class = "urlbuttons">{{ chat.name }}</li></a>
+            <a href="{% url 'chat:chatroom' chat.slug%}" class="list-group-item list-group-item-action">
         {% endif %}
+                
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{chat.name}}</h5>
+                </div>
+                <small class="fw-lighter fs-6">{{chat.description}}</small>
+            </a>
     {% endfor %}
 {% else %}
-    <li class = "urlbuttons">You are in no chats.</li>
+    <li class="list-group-item list-group-item-info">You are in no chats.</li>
 {% endif %}
+
+            
+        

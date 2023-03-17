@@ -4,7 +4,7 @@ from chat.models import Chat
 register = template.Library()
 
 @register.inclusion_tag('chat/all_chats.html')
-def get_chat_list(request, current_chat=None):
+def get_chat_list(request, chat_name=None):
     context_dict = {}
     try:
         chat_list = []
@@ -16,7 +16,7 @@ def get_chat_list(request, current_chat=None):
                     chat_list.append(chat)
                     break
         context_dict['chats'] = chat_list
-        context_dict['current_chat'] = current_chat
+        context_dict['chat_name'] = chat_name
     except:
         context_dict['chats'] = None
     return context_dict

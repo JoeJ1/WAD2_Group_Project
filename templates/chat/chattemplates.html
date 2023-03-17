@@ -39,19 +39,20 @@
           <main>
             <div class="container-fluid">
                 <div class="row row-tall h-100" style = "background-image: url('static/images/no_words_logo.png')">
-                    <div class="col-md-2 my-col chat-col mh-100">
-                        <h2 class="text-center" style="color:white;">
-                            My Chats
-                        </h2>
-                        <ul style = "list-style-type: none; margin:0;padding:0;">
+                    <div class="col-md-2 my-col chat-col">
+                        <div class="list-group">
+                            {% get_chat_list request chat_name %}
+                        </div>
+                        <div class="list-group mt-3">
+                            <a href="{% url 'chat:create' %}" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Create Chat</h5>
+                                </div>
+                            </a>
+                        </div>
 
-                            {% get_chat_list request current_chat %}
-
-                            <span class="line"></span>
-                            <a href="{% url 'chat:create' %}"><li class = "urlbuttons">Create Chat</li></a>
-                          </ul>
                     </div>
-                    <div class="col-md-10 my-col content-col mh-100">
+                    <div class="col-md-10 my-col content-col">
                         <div class="alert alert-info" role="alert">
                             {% block content_title %}
                             {% endblock %}
