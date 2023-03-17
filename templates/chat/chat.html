@@ -26,6 +26,7 @@
 {% endblock %}
 {% block body_block %}
 {{ this_username|json_script:"this-username" }}
+{{ chat_name_slug|json_script:"chat-slug" }}
 <body>
     <div class="row row-tall h-100">
         <div class="col h-100">
@@ -44,13 +45,24 @@
             {% endfor %}
             </div>
             <div class="input-group mb-5 position-sticky">
-              <input type="text" class="form-control" placeholder="Your message here" aria-label="Message" aria-describedby="button-addon2">
-              <button class="btn btn-outline-secondary" type="button" id="button-addon2">Send</button>
+              <input type="text" class="form-control" placeholder="Your message here" id="message-input">
+              <button class="btn btn-outline-secondary" type="button" id="send-button">Send</button>
             </div>
         </div>
     </div>
     <script>
-
+        $(document).ready(function() {
+            $("#send-button").click(function() {
+                let username = "{{this_username|escapejs}}";
+                let slug = "{{chat_name_slug|escapejs}}";
+                let content = $("#message-input").val();
+                $.get('send_message',
+                    {'content':content,'username':username,'chat_slug':slug},
+                    function(data) {
+                        alert(data)
+                    })
+            })
+        });
     </script>
 </body>
 {% endblock %}

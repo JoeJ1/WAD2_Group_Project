@@ -125,20 +125,22 @@ def user_login(request):
 def main_page(request):
     return render(request, "chat/mainpage.html", context=get_user_chats(request))
 
-def send_message(request):
+@login_required
+def send_message(request, chat_name_slug):
     username = request.GET['username']
     content = request.GET['content']
-    chat = Chat.objects.filter(slug=resuest.GET['chat_slug'])[0]
-    sender = Users.objects.filter(user=User.objects.filter(username=username))
-    m = Messages.objects.get_or_create(content=content, chat=chat, sender=sender)
+    chat_slug = request.GET['chat_slug']
+    chat = Chat.objects.get(slug=chat_slug)
+    sender = UserProfile.objects.get(user=request.user)
+    m = Message.objects.create(content=content, chat=chat, sender=sender)
     m.save()
     return get_messages(request)
 
-
+@login_required
 def get_messages(request):
     chat_slug = request.GET['chat_slug']
-    messages = Messages.objects.filter(Chat.objects.filter(slug=chat_slug)[0])
-    messages_list = [{'time_stamp':m.timestamp, 'sender':m.sender, 'content':m.content} for m in messages]
+    messages = Message.objects.filter(chat=Chat.objects.get(slug=chat_slug))
+    messages_list = [{'time_stamp':str(m.time_stamp), 'sender':m.sender.user.username, 'content':m.content} for m in messages]
     return HttpResponse(json.dumps(messages_list))
 
 def sign_up(request):
