@@ -26,12 +26,11 @@ def delete_account(request):
     user.delete()
     return redirect(reverse('chat:signup'))
 
+@login_required
 def get_user_chats(request):
     context_dict = {}
     try:
         chat_list = []
-        # for i in Chat.objects.all():
-        #     print(i.users.all())
         for chat in Chat.objects.all():
             for user in chat.users.all():
                 if str(user) == str(request.user):
@@ -126,11 +125,23 @@ def user_login(request):
 def main_page(request):
     return render(request, "chat/mainpage.html", context=get_user_chats(request))
 
-def send_message(request, message):
-    pass
+def send_message(request):
+    username = request.GET['username']
+    content = request.GET['content']
+    chat = Chat.objects.filter(slug=resuest.GET['chat_slug'])[0]
+    sender = Users.objects.filter(user=User.objects.filter(username=username))
+    m = Messages.objects.get_or_create(content=content, chat=chat, sender=sender)
+    m.save()
+    return get_messages(request)
 
-def check_messages(request):
-    pass
+
+def get_messages(request):
+    chat_slug = request.GET['chat_slug']
+    messages = Messages.objects.filter(Chat.objects.filter(slug=chat_slug)[0])
+    messages_dict = {'time_stamp':m.timestamp for m in messages,
+                     'sender':m.sender for m in messages,
+                     'content':m.content for m in messages}
+    return HttpResponse(json.dumps(messages_dict))
 
 def sign_up(request):
     registered = False
