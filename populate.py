@@ -55,8 +55,7 @@ def populate():
     for chat in chats:
         c = create_chat(chat['name'],chat['description'],chat['owner'])
         for user in users:
-            if users[user] != chat['owner']:#This can be changed depending on the implementation down the line this exludes the owner to be added as used
-                c.users.add(users[user])
+            c.users.add(users[user])
 
     for message in messages:
         add_message(message['sender'],message['chat'],message['content'])
