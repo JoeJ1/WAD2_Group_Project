@@ -28,34 +28,22 @@
 
 {% block body_block %}
 
-<label for="ChatName" class="form-label">Add Member</label>
-<div class="input-group">
-  <input type="text" class="form-control" id="memberInput" placeholder="Enter Member Name">
-</div>
-<button type="button" id="addMemberButton" class="btn btn-primary" onclick="addMember()" id="addMemberButton">Add</button>
-</br>
-</br>
-
 <div class="container-fluid">
     <div class="row justify-content-center align-items-center g-2">
+        <div class = "col"><label for="ChatName" class="form-label">Add Member</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="memberInput" placeholder="Enter Member Name">
+            </div>
+            <button type="button" id="addMemberButton" class="btn btn-primary" onclick="addMember()" id="addMemberButton">Add</button></div>
         <div class="col">
+            Owner: {{ owner }} </br> Display Name: {{owner.display_name}}</br></br>
         {% for user in chat_members %}
             {% if user != owner %}
                 Username: {{ user }} </br> Display Name: {{user.display_name}}</br></br>
             {% endif %}
         {% endfor %}
         </div>
-        <div class="col">Column</div>
     </div>
 
 </div>
-
-
-    <a href="#" class = "urlbuttons">{{owner}}</a> </br>
-    Owner: {{ owner }} </br> Display Name: {{owner.display_name}}</br></br>
-    {% for user in chat_members %}
-        {% if user != owner %}
-            Username: {{ user }} </br> Display Name: {{user.display_name}}</br></br>
-        {% endif %}
-    {% endfor %}
 {% endblock %}
