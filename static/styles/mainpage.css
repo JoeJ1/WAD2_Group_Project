@@ -73,3 +73,25 @@
     border:1px solid white;
     border-radius: 20px;
 }
+.outerbox{
+    margin: 3rem;
+    background-color: var(--main-col-light);
+    border-radius: 10px;
+    padding-top: 10px;
+    align-items: center;
+}
+
+.membercol{
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.colpadding{
+    padding: 10px;
+}
+
+.scrollable{
+    height: 7rem;
+    overflow:hidden; overflow-y:scroll;
+}
