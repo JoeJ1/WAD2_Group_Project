@@ -1,4 +1,26 @@
-.container {
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  color: var(--text-primary);
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+/*.container {
     padding:1rem;
     vertical-align: middle;
     margin-top:2rem;
@@ -83,7 +105,7 @@ button:active {
     transition: box-shadow 10ms;
 }
 */
-div span.login-text{
+/*div span.login-text{
   text-align: center;
   color: var(--text-col);
 }
@@ -91,4 +113,4 @@ div span.login-text{
 a, a:visited, a:active{
   color: #4cefff;
   text-decoration: none;
-}
+}*/

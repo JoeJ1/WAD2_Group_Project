@@ -1,4 +1,67 @@
 :root{
+    --bs-primary: #6e8fc8; !important;
+    --bs-primary-rgb: 110, 143, 200; !important;
+    --bs-secondary: #91b1f7; !important;
+    --bs-secondary-rgb: 145, 177, 247; !important;
+    --text-primary: #fff; !important;
+    --text-primary-rgb: 255, 255, 255; !important;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+  display: inline;
+  position:static;
+}
+
+.dropbtn {
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: var(--main-col);
+  }
+  
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropdown-content {
+    border-radius: 10px;
+    display: none;
+    position: absolute;
+    right:-10px;
+    background-color: #f1f1f1;
+    top:calc(100%+0.25rem);
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .links{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-radius: 10px;
+  }
+
+  .links:hover{
+    background-color:var(--light-shadow-col);
+    color:white;
+  }
+  
+  .dropdown :hover {}
+  
+  .show {display: block;}
+/*:root{
     --main-col:#6e8fc8;
     --main-col-light:#91b1f7;
     --light-shadow-col:#7fa4e6;
@@ -43,7 +106,7 @@
     background-color: #6e8fc8;
     height:100vh;
     padding:10px;
-    /*font-size:x-large;*/
+    font-size:x-large;
 }
 
 .content-col{
@@ -86,7 +149,7 @@
     margin-bottom:0.5rem;
 }
 
-button {
+button.sign-up{
     border-radius: 1rem;
     background: var(--main-col);
     border: none;
@@ -95,14 +158,14 @@ button {
     transition: 150ms;
 }
 
-button:hover {
+button.sign-up:hover {
     background-color: var(--main-col-light);
     box-shadow:  10px 10px 15px var(--dark-shadow-col),
              -10px -10px 15px var(--light-shadow-col);
     transition: box-shadow 150ms;
 }
 
-button:active {
+button.signup:active {
     background-color: var(--main-col);
     box-shadow:  none;
     border: none;
@@ -158,4 +221,4 @@ button:active {
   
   .dropdown :hover {}
   
-  .show {display: block;}
+  .show {display: block;}*/

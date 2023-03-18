@@ -11,30 +11,28 @@
 {% endblock %}
 
 {% block body_block %}
-<form id="login_form" method="post" action="{% url 'chat:login' %}">
-{% csrf_token %}
-<div class="container text-center">
-    <div class="card form-signin m-auto align-middle floating">
-        <span class="cardtitle">MyChatGLA</span>
-        <div class="input-group">
-            <input required="" type="text" name="username" autocomplete="off" class="input depressed">
-            <label class="user-label">Username</label>
+<main class="form-signin w-100 m-auto text-center">
+    <div class="card bg-primary">
+        <div class="card-body">
+            <form id="login_form" method="post" action="{% url 'chat:login' %}">
+                {% csrf_token %}
+                <img class="mb-4" src="{% static '/images/no_words_logo.png'%}" alt="" width="70" height="70">
+                <h1 class="h3 mb-3 fw-normal">Log in</h1>
+                <div class="form-floating">
+                  <input name="username" type="text" class="form-control bg-secondary text-light mb-1 border-primary-subtle" id="floatingInput" placeholder="Username" required="" autocomplete="off">
+                  <label for="floatingInput">Username</label>
+                </div>
+                <div class="form-floating">
+                  <input name="password" type="password" class="form-control bg-secondary text-light mb-2 border-primary-subtle" id="floatingPassword" placeholder="Password" required="" autocomplete="off">
+                  <label for="floatingPassword">Password</label>
+                </div>
+                <button class="w-100 btn btn-lg btn-outline-light" type="submit">Sign in</button>
+                <span class="login-text">Don't have an account? <a href="{% url 'chat:signup' %}" class="text-light">Sign up.<a></span>
+                <a href="{% provider_login_url 'google'%}?next=/" class="text-light">
+                    Login with Google
+                </a>
+            </form>
         </div>
-            <div class="input-group">
-            <input required="" type="password" name="password" autocomplete="off" class="input depressed">
-        <label class="user-label" >Password</label>
-        </div>
-
-        <div class="input-group">
-            <button class="sign-up raised"> <span>Log in</span></button>
-        </div>
-        <div class="help-text-container">
-            <span class="login-text">Don't have an account? <a href="{% url 'chat:signup' %}">Sign up.<a></span>
-        </div>
-        <a href="{% provider_login_url 'google'%}?next=/">
-            Login with Google
-        </a>
     </div>
-</div>
-</form>
+</main>
 {% endblock %}
