@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from chat.models import UserProfile, Chat
+from chat.models import UserProfile, Chat, File
 
 
 class UserForm(forms.ModelForm):
@@ -29,3 +29,18 @@ class ChatForm(forms.ModelForm):
     class Meta:
         model = Chat
         fields = ('name', 'description', 'image', 'users', 'owner')
+        
+class FileForm(forms.ModelForm):
+    
+    class Meta:
+        model = File
+        #need to fix name as it gets overwritten with actual file name
+        
+        
+        #to bootstrap
+        # widgets = {
+        #     'data': forms.FileField(attrs= {'class':'form-control'})
+        # }
+        # can do the same to make labels with a labels dict
+        
+        fields = ['data'] 

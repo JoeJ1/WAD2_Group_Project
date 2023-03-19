@@ -27,4 +27,22 @@
 {% endblock %}
 
 {% block body_block %}
+{% if current_user == owner %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" class ="btn btn-secondary" />
+</form>
+
+{% endif %}
+{% if files %}
+    {% for file in files %}
+        <p>
+            {{ file }}
+            <a href="{{ MEDIA_URL }}{{ file.data }}" download>Download</a>
+        </p>
+    {% endfor %}
+{% else %}
+    There are currently no files.
+{% endif %}
 {% endblock %}

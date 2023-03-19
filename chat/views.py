@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from chat.models import Chat, File, UserProfile, Message
-from chat.forms import UserForm, UserProfileForm, ChatForm
+from chat.forms import FileForm, UserForm, UserProfileForm, ChatForm
 
 @login_required
 def leave_group_chat(request, chat_name_slug):
@@ -75,6 +75,8 @@ def delete_group_chat(request, chat_name_slug):
 @login_required
 def files(request, chat_name_slug):
     context_dict = {}
+    form = FileForm
+    context_dict['form'] = form
     try:
         chat = Chat.objects.get(slug=chat_name_slug)
         user = UserProfile.objects.filter(user=request.user)
@@ -86,6 +88,21 @@ def files(request, chat_name_slug):
     context_dict['chat_name'] = chat
     context_dict['current_user'] = user.get()
     context_dict['owner'] = chat_owner
+    context_dict['files'] = File.objects.filter(chat=chat)
+    if request.method == 'POST':
+        form = FileForm(request.POST, request.FILES)
+        if form.is_valid():
+            print('valid form')
+            
+            file_instance = form.save(commit=False)
+            file_instance.chat = chat 
+            
+            file_instance.save()
+            return redirect(reverse('chat:files', kwargs={'chat_name_slug': chat_name_slug}))
+        else:
+            print(form.errors)
+    else:
+        form = FileForm()
     return render(request, 'chat/files.html', context_dict)
 
 @login_required
