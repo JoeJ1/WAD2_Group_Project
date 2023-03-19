@@ -16,6 +16,17 @@
   background-color: #91b1f7;
   color:#fff;
 }
+
+.membercol{
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.ultext{
+    color:var(--bs-primary);
+    
+}
 </style>
 {% endblock %}
 
@@ -26,9 +37,10 @@ My Profile - {{current_user}}
 {% block body_block %}
 <div class="container-fluid box-size">
     <div class="row justify-content-center align-items-center g-2">
-        <div class="col"><img src="{% static 'images/classhat.jpg' %}" class="img-fluid rounded-top" alt="" height="auto" width = "auto"></div>
         <div class="col">
-            <ul>
+            <img src="{% static 'images/classhat.jpg' %}" class="img-fluid rounded-top" alt="" height="auto" width = "auto"></div>
+        <div class="col membercol">
+            <ul class = "ultext">
                 <li>Name</li>
                 <li>Display name</li>
             </ul>
@@ -39,6 +51,7 @@ My Profile - {{current_user}}
             
               <label for="" class="form-label">Change Display Name</label>
               <input type="text" class="form-control" id="memberInput" placeholder="Enter New Display name">
+              <button type="submit" class="btn btn-primary">Submit</button>
 
         <div class="col">
         <label for="" class="form-label">Delete Account</label>
