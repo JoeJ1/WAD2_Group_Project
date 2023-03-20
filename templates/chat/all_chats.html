@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 {% if chats %}
+    <a class="list-group-item align-items-center">
+        <div class="d-flex w-100 align-items-center">
+            <h3 class="mb-1 align-items-center text-truncate">My Chats</h3>
+        </div>
+    </a>
     {% for chat in chats %}
         {% if chat.name == chat_name %}
             <a href="{% url 'chat:chatroom' chat.slug%}" class="list-group-item list-group-item-action active">
