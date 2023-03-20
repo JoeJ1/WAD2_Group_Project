@@ -134,7 +134,7 @@ def user_login(request):
                 return redirect(reverse('chat:chat'))
         else:
             print(f"Invalid login details: {username}, {password}")
-            return HttpResponse("Invalid login details supplied.")  #needs changed to handle wrong logins
+            return render(request, "chat/login.html", context={})
     else:
         return render(request, "chat/login.html", context={})
 
