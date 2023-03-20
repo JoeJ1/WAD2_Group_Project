@@ -22,7 +22,7 @@
               <div class = "col">
                 <div class="card bg-primary text-light p-2 m-1">
                     {% if chat.image %}
-                    <img  class = "card-img-top" src = "{{chat.image}}" alt = "chat image">
+                    <img  class = "card-img-top" src = "{{chat.image.url}}" alt = "chat image">
                     {% else %}
                     <img  class = "card-img-top" src = "{% static 'images/classhat.jpg' %}" alt = "teacher hat">
                     {% endif %}
