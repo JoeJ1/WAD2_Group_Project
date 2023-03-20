@@ -25,7 +25,7 @@
                     {% if chat.image %}
                     <img  class = "card-img-top rounded object-fit-cover" width="200" height="150" src = "{{chat.image.url}}" alt = "chat image">
                     {% else %}
-                    <img  class = "card-img-top rounded object-fit-cover" width="200" height="150" src = "{% static 'images/classhat.jpg' %}" alt = "teacher hat">
+                    <img  class = "card-img-top rounded object-fit-cover" width="200" height="150" src = "{% static 'images/logo.png' %}" alt = "teacher hat">
                     {% endif %}
                     <div class ="card-body">
                         <p class="card-text text-truncate">{{ chat.name }}</p>
