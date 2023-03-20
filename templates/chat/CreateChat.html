@@ -1,11 +1,11 @@
 {% extends 'chat/chattemplates.html'%}
 {% load staticfiles %}
 
-{% block title_block_2 %}
+{% block title_block %}
     Create chats
 {% endblock %}
 
-{% block includes_block_2 %}
+{% block includes_block %}
 <style>
     #createChatButton{
         z-index: 2;
@@ -21,7 +21,7 @@ Create New Chat
 {% endblock %}
 
 
-{% block body_block_2 %}
+{% block content_block %}
 
 <form id="user_form" method="post" action="" enctype="multipart/form-data">
 {% csrf_token %}

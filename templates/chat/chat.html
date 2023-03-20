@@ -1,11 +1,8 @@
 {% extends 'chat/chattemplates.html' %}
 {% load staticfiles %}
 
-{% block title_block_2 %}
+{% block title_block %}
 {{chat_name}}
-{% endblock %}
-
-{% block includes_block_2 %}
 {% endblock %}
 
 {% block content_title %}
@@ -26,7 +23,7 @@
 </div>
 {% endif %}
 {% endblock %}
-{% block body_block_2 %}
+{% block content_block %}
 {{ this_username|json_script:"this-username" }}
 {{ chat_name_slug|json_script:"chat-slug" }}
 <body>

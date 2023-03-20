@@ -1,12 +1,8 @@
 {% extends 'chat/chattemplates.html'%}
 {% load staticfiles %}
 
-{% block title_block_2 %}
+{% block title_block %}
     Files
-{% endblock %}
-
-{% block includes_block_2 %}
-
 {% endblock %}
 
 {% block content_title %}
@@ -28,7 +24,7 @@
 {% endif %}
 {% endblock %}
 
-{% block body_block_2 %}
+{% block content_block %}
 {% if current_user == owner %}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
