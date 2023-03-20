@@ -61,13 +61,23 @@
 
                     <h3>Owner: </h3>{{ owner }}, Display Name: {{owner.display_name}}</br></br>
                     <h5>Members </h5>
+                    {% if current_user == owner %}
                     <div class = "scrollable">
                     {% for user in chat_members %}
-                        {% if user != owner %}
-                            Username: {{ user }}, Display Name: {{user.display_name}}</br></br>
-                        {% endif %}
-                    {% endfor %}
+                            {% if user != owner %}
+                                Username: {{ user }}, Display Name: {{user.display_name}} <a class="btn btn-danger" href="#">Remove</a></br></br>
+                            {% endif %}
+                        {% endfor %}
                     </div>
+                    {% else %}
+                    <div class = "scrollable">
+                        {% for user in chat_members %}
+                            {% if user != owner %}
+                                Username: {{ user }}, Display Name: {{user.display_name}}</br></br>
+                            {% endif %}
+                        {% endfor %}  
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
