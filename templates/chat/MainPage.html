@@ -13,21 +13,23 @@
     My Chats
 {% endblock %}
 {% block body_block %}
-    <div class="gird-child-myclasses">
-      <div class = "grid_myClasses">
+    <div class="container text-center">
+      <div class = "row row-cols-lg-4 row-cols-md-3 row-cols-sm-1">
 
         {% if chats %}
             {% for chat in chats %}
             <a href="{% url 'chat:chatroom' chat.slug %}">
-              <div class = "grid-child-myclassicon">
-                <div class = "imagebackground">
-                  {% if chat.image %}
-                  <img  class = "imgchat" src = "{{chat.image}}" alt = "chat image">
-                  {% else %}
-                  <img  class = "imgchat" src = "{% static 'images/classhat.jpg' %}" alt = "teacher hat">
-                  {% endif %}
-                </div>
-                <div class = classname>{{ chat.name }}</div> 
+              <div class = "col">
+                <div class="card bg-primary text-light p-2 m-1">
+                    {% if chat.image %}
+                    <img  class = "card-img-top" src = "{{chat.image}}" alt = "chat image">
+                    {% else %}
+                    <img  class = "card-img-top" src = "{% static 'images/classhat.jpg' %}" alt = "teacher hat">
+                    {% endif %}
+                    <div class ="card-body">
+                        <p class="card-text text-truncate">{{ chat.name }}</p>
+                    </div>
+                  </div>
               </div>
             </a>
             {% endfor %}

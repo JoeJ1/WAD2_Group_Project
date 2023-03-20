@@ -7,67 +7,13 @@
 
 {% block includes_block %}
 <style>
-.box-size{
-  height:fit-content;
-  width:55rem;
-  border:2px solid #91b1f7;
-  border-radius: 20px;
-  padding:15px;
-  background-color: #91b1f7;
-  color:#fff;
-}
-.center{
-  height: 25vh;
-  width: 300px;
-  position: relative;
-}
-.box {
-  color:white;
-  background-color: var(--main-col);
-  border-radius: 20px;
-  width:80%;
-  margin-top: 2rem;
-}
-.mycol{
-  background-color: #ffff;
-  color:#91b1f7;
-  padding: 10px;
-  padding-left:15px;
-  padding-right:15px;
-  border-radius: 10px;
-}
-.lists{
-  list-style-type: none;
-   margin:0;padding:0;
-    height:100px;
-    overflow:hidden; overflow-y:scroll;
-}
-
-.close-button{
-  color:inherit; !important;
-  text-decoration:none; !important;
-  line-height: inherit; !important;
-  margin-right: 0.7rem;
-}
-
-.close-button:hover{
-  cursor:pointer;
-}
-.Memebers-added { grid-area: Memebers-added; }
-
-.Chat-title { grid-area: Chat-title; }
-
-.chat-description { grid-area: chat-description; }
-
-.Add-memebers { grid-area: Add-memebers; }
-
-.chats-image { grid-area: chats-image;}
-
-.Create { grid-area: Create;
-text-align: center; }
-
-
-  </style>
+    #createChatButton{
+        z-index: 2;
+        color: var(--bs-list-group-active-color);
+        background-color: var(--bs-list-group-active-bg);
+        border-color: var(--bs-list-group-active-border-color);
+    }
+</style>
 {% endblock %}
 
 {% block content_title %}
@@ -182,13 +128,13 @@ Create New Chat
     <div class="col">
       <div class = "mycol">
         <label for="UploadImage" class="form-label">Upload Background Image</label>
-        <input class="form-control form-control-lg" name="image" id="UploadImage" type="file">
+        <input class="form-control" name="image" id="UploadImage" type="file">
       </div>
     </div>
   </div>
   <div class="row justify-content-center align-items-top myrows mb-3">
     <div class="col-1 justify-content-center align-items-center">
-      <button class="btn btn-light urlbuttons" type="submit" style="position: relative;">Create</button>
+      <button class="btn btn-primary" type="submit">Create</button>
     </div>
   </div>
 </div>

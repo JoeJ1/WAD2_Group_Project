@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 {% load staticfiles %}
 {% load static %}
 {% load chat_template_tags %}
 
-<html>
+<html class="h-100">
     <head lang="en">
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +17,7 @@
         {% block includes_block %}
         {% endblock %}
     </head>
-    <body class="overflow-hidden">
+    <body class="overflow-hidden h-100">
         <nav class="navbar navbar-dark" style="background-color: #91b1f7;">
             <div class="container-fluid">
                     <a class="navbar-brand" href="/chat/">
@@ -27,7 +26,7 @@
                     </a>
                 <div class="d-flex">
                     <div class="dropdown">
-                        <button onclick="myFunction()" class="dropbtn navbutton">Profile</button>
+                        <button onclick="myFunction()" class="dropbtn btn btn-outline-light navbutton">Profile</button>
                         <div id="myDropdown" class="dropdown-content">
                           <a class = "links" href="{% url 'chat:profile' %}">Settings</a>
                           <a  class = "links" href="{% url 'chat:logout' %}">Sign Out</a>
@@ -36,26 +35,28 @@
                 </div>
             </div>
           </nav>
-          <main>
-            <div class="container-fluid">
+          <main class="h-100">
+            <div class="container-fluid h-100">
                 <div class="row row-tall h-100" style = "background-image: url('static/images/no_words_logo.png')">
-                    <div class="col-md-2 my-col chat-col">
-                        <div class="list-group">
+                    <div class="col col-2 d-none d-md-block bg-primary h-100">
+                        <div class="list-group pt-3">
                             {% get_chat_list request chat_name %}
                         </div>
                         <div class="list-group mt-3">
-                            <a href="{% url 'chat:create' %}" class="list-group-item list-group-item-action">
+                            <a id="createChatButton"href="{% url 'chat:create' %}" class="list-group-item list-group-item-action">
                                 <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1">Create Chat</h5>
+                                    <h5 class="mb-1 text-truncate">Create Chat</h5>
                                 </div>
                             </a>
                         </div>
 
                     </div>
-                    <div class="col-md-10 my-col content-col">
+                    <div class="col pt-3">
                         <div class="alert alert-info" role="alert">
+                            <h1 class="fs-3">
                             {% block content_title %}
                             {% endblock %}
+                            </h1>
                         </div>
                         {% block body_block %}
                         {% endblock %}

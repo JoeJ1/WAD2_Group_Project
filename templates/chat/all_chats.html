@@ -8,9 +8,9 @@
         {% endif %}
                 
                 <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">{{chat.name}}</h5>
+                    <h5 class="mb-1 text-truncate">{{chat.name}}</h5>
                 </div>
-                <small class="fw-lighter fs-6 text-truncate">{{chat.description}}</small>
+                <small class="d-flex justify-content-between fw-lighter text-truncate">{{chat.description}}</small>
             </a>
     {% endfor %}
 {% else %}

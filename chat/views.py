@@ -227,7 +227,6 @@ def create_page(request):
             chat.save()
             return redirect('chat:chat')
         else:
-            print('here')
             print(chat_form.errors)
     else:
         chat_form = ChatForm()
