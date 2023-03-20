@@ -24,13 +24,13 @@ def populate():
          "description":'Discussion group for WAD labs',
          "users":'',
          "owner": users["Onur"],
-         "image":'/uploadpics/rango.jpg'},
+         "image":'/chat_images/rango.jpg'},
 
         {"name":'The Brotherhood',
          "description":'Secret cult meeting',
          "users":'',
          "owner": users["Joe"],
-         "image":'/uploadpics/rango.jpg'}
+         "image":'/chat_images/logo.png'}
     ]
 
     messages = [

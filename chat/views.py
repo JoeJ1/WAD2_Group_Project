@@ -212,7 +212,7 @@ def create_page(request):
         except:
             members = []
         owner = UserProfile.objects.get(user=request.user)
-        chat_form = ChatForm(request.POST)
+        chat_form = ChatForm(request.POST, request.FILES)
         user_list = []
         for i in user_profiles:
             if i.user.username in members:
