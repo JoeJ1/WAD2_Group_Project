@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 
 from chat.models import UserProfile, Chat, File
+from django.contrib.auth.forms import UserChangeForm
 
 
 class UserForm(forms.ModelForm):
@@ -44,3 +45,17 @@ class FileForm(forms.ModelForm):
         # can do the same to make labels with a labels dict
         
         fields = ['data'] 
+        
+class ChangeUserDisplayName(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        widgets = {
+            'display_name' : forms.TextInput(attrs= {'class':'form-control', 'placeholder' : 'Enter a new display name.'})
+        }
+        fields = ['display_name']
+        
+  
+class ChangeUserProfilePic(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['picture']

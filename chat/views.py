@@ -3,8 +3,8 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
-from chat.models import Chat, File, UserProfile, Message
-from chat.forms import FileForm, UserForm, UserProfileForm, ChatForm
+from chat.models import Chat, File, UserProfile, Message, DjangoUser
+from chat.forms import ChangeUserDisplayName, FileForm, UserForm, UserProfileForm, ChatForm, ChangeUserProfilePic
 
 @login_required
 def leave_group_chat(request, chat_name_slug):
@@ -17,14 +17,6 @@ def leave_group_chat(request, chat_name_slug):
     chat.save()
     return redirect(reverse('chat:chat'))
 
-@login_required
-def delete_account(request):
-    try:
-        user = UserProfile.objects.get(user=request.user)
-    except UserProfile.DoesNotExist:
-        user = None
-    user.delete()
-    return redirect(reverse('chat:signup'))
 
 @login_required
 def get_user_chats(request):
@@ -62,6 +54,18 @@ def members(request, chat_name_slug):
     context_dict['current_user'] = user.get()
     print(user.get(), chat_owner)
     return render(request, 'chat/members.html', context_dict)
+
+
+@login_required
+def delete_account(request):
+    try:
+        user_profile = UserProfile.objects.get(user=request.user)
+        user = DjangoUser.objects.get(userprofile=user_profile)
+    except UserProfile.DoesNotExist:
+        user = None
+    user_profile.delete()
+    user.delete()
+    return redirect(reverse('chat:signup'))
 
 @login_required
 def delete_group_chat(request, chat_name_slug):
@@ -245,8 +249,44 @@ def test(request):
 @login_required
 def profile(request):
     context_dict = {}
+    pic_form = ChangeUserProfilePic
+    display_name_form = ChangeUserDisplayName
     try:
+        context_dict['display_name_form'] = display_name_form
+        context_dict['pic_form'] = pic_form
         context_dict['current_user'] = UserProfile.objects.filter(user=request.user).get()
     except:
         context_dict['current_user'] = None
+        
+    if request.method == 'POST':
+        
+        
+        user = UserProfile.objects.get(user=request.user)
+        form_type = request.POST.get('form_type')
+        if form_type == 'display_name_form':
+            display_name_form = ChangeUserDisplayName(request.POST)
+            if display_name_form.is_valid():
+                print('valid display')
+                display_name = display_name_form.cleaned_data['display_name']
+                user.display_name = display_name
+                user.save()
+                return redirect('chat:profile')
+                # handle display_name_form submission
+            else:
+                print(display_name_form.errors)
+        elif form_type == 'pic_form':
+            pic_form = ChangeUserProfilePic(request.POST, request.FILES)
+            if pic_form.is_valid():
+                print('valid')
+                picture = pic_form.cleaned_data['picture']
+                user.picture = picture
+                user.save()
+                return redirect('chat:profile')
+            else:
+                print(pic_form.errors)
+    else:
+        display_name_form = ChangeUserDisplayName()
+        pic_form = ChangeUserProfilePic()
+
+        
     return render(request,'chat/profile.html',context=context_dict)
