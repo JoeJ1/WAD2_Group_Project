@@ -3,10 +3,8 @@
     --bs-primary-rgb: 110, 143, 200; !important;
     --bs-secondary: #91b1f7; !important;
     --bs-secondary-rgb: 145, 177, 247; !important;
-    --bs-tertiary: #5e7193; !important;
-    --bs-tertiary-rgb: 94, 113, 147; !important;
-    --bs-tertiary-bg: ;#7ca2d2 !important;
-    --bs-tertiary-bg-rgb: 124, 162, 210; !important;
+    --bs-tertiary: #7ca2d2; !important;
+    --bs-tertiary-rgb: 124, 162, 210; !important;
     --text-primary: #fff; !important;
     --text-primary-rgb: 255, 255, 255; !important;
 }
