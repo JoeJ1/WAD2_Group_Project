@@ -37,14 +37,15 @@
                         </div>
                     </div>
                     <div class="col ps-0 pe-0">
-                        <div class="p-3 navbar navbar-expand-lg bg-tertiary" style="background-color:var(--bs-tertiary);">
-                            <h1 class="fs-3 text-light">
+                        <div class="pt-3 ps-3 pe-3 pb-0 navbar navbar-expand-lg bg-tertiary" style="background-color:var(--bs-tertiary);">
                             {% block content_title %}
                             {% endblock %}
-                            </h1>
                         </div>
-    <div class="container-fluid p-3 h-100">
-    {% block content_block %}
-    {% endblock %}
-    </div>
+
+                        <div class="container-fluid p-3 h-100">
+                        {% block content_block %}
+                        {% endblock %}
+                        </div>
+                    </div>
+            </div>
 {% endblock %}
