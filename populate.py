@@ -6,70 +6,82 @@ import django
 def populate():
 
 
-    users = {"Reuben":add_user('Reuben_C','HelloTEST123456','Reuben','/uploadpics/logo.png'),
+    users = {"Reuben":add_user('Reuben_S','1234','Reuben','/uploadpics/logo.png'),
 
-        "Onur":add_user('Onur_H','HelloTEST123456','Onur','/uploadpics/logo.png'),
+        "Onur":add_user('Onur_C','1234','Onur','/uploadpics/logo.png'),
 
-        "Joe":add_user('Joe_F','HelloTEST123456','Joe','/uploadpics/logo.png'),
+        "Joe":add_user('Joe_J','1234','Joe','/uploadpics/logo.png'),
 
-        "Lewis":add_user('Lewis_S','HelloTEST123456','Lewis','/uploadpics/logo.png'),
+        "Lewis":add_user('Lewis_B','1234','Lewis','/uploadpics/logo.png'),
 
-        "David":add_user('David_B','HelloTEST123456','David','/uploadpics/logo.png'),
+        "David":add_user('David_M','1234','David','/uploadpics/logo.png'),
 
-        "James":add_user('James_T','HelloTEST123456','James','/uploadpics/logo.png')}
+        "James":add_user('James_M','1234','James','/uploadpics/logo.png')}
 
 
     chats= [
-        {"name":'Wad_Buds',
-         "description":'Discussion group for WAD labs',
+        {"name":'WAD Group 11C',
+         "description":'Discussion for the WAD2 group project',
          "users":'',
          "owner": users["Onur"],
          "image":'/chat_images/rango.jpg'},
 
-        {"name":'The Brotherhood',
-         "description":'Secret cult meeting',
+        {"name":'Maths 2C',
+         "description":'Groupchat for help with real analysis',
          "users":'',
          "owner": users["Joe"],
-         "image":'/chat_images/logo.png'}
+         "image":'/chat_images/logo.png'},
+
+        {"name":'OOSE',
+         "description":'Post your OOSE questions here!',
+         "users":'',
+         "owner": users["Lewis"],
+         "image":'/chat_images/rango.jpg'},
+
+        {"name":'Django discussion',
+         "description":'Get help on django problems!',
+         "users":'',
+         "owner": users["David"],
+         "image":'/chat_images/logo.png'},
     ]
 
     messages = [
-        {'chat':'Wad_Buds',
-         'sender':'Onur_H',
+        {'chat':'WAD Group 11C',
+         'sender':'Onur_C',
          'content':'Hello!'},
-        {'chat':'Wad_Buds',
-         'sender':'Reuben_C',
-         'content':'Hi! 123'},
-        {'chat':'Wad_Buds',
-         'sender':'Lewis_S',
+        {'chat':'Maths 2C',
+         'sender':'Reuben_S',
+         'content':'Hi!'},
+        {'chat':'OOSE',
+         'sender':'Lewis_B',
          'content':'12345678'},
-        {'chat':'The Brotherhood',
-         'sender':'Joe_F',
+        {'chat':'Django discussion',
+         'sender':'Joe_J',
          'content':'12345678'},
-        {'chat':'The Brotherhood',
-         'sender':'David_B',
+        {'chat':'Django discussion',
+         'sender':'David_M',
          'content':'910111213'},
-        {'chat':'The Brotherhood',
-         'sender':'James_T',
+        {'chat':'Maths 2C',
+         'sender':'James_M',
          'content':'19579825985198'},
     ]
 
     files = [
         {"name":'TestFile1',
          "data":'/uploadpics/test/rango.jpg',
-         "chat":'Wad_Buds'},
+         "chat":'WAD Group 11C'},
         {"name":'TestFile1',
          "data":'/uploadpics/logo.jpg',
-         "chat":'Wad_Buds'},
+         "chat":'Maths 2C'},
         {"name":"TestFile2",
          "data":'/uploadpics/rango.jpg',
-         "chat":'Wad_Buds'},
+         "chat":'OOSE'},
         {"name": "TestFile1",
          "data": '/uploadpics/logo.jpg',
-         "chat": 'The Brotherhood'},
+         "chat": 'Django discussion'},
         {"name": "TestFile5",
          "data": '/uploadpics/rango.jpg',
-         "chat": 'The Brotherhood'}
+         "chat": 'Maths 2C'}
     ]
 
     for chat in chats:
@@ -79,7 +91,7 @@ def populate():
 
     for message in messages:
         add_message(message['sender'],message['chat'],message['content'])
-
+    
     for file in files:
         add_file(file['data'],file['chat'])
     #chat = Chat.objects.filter(name = "Wad_Buds")[0]
@@ -100,9 +112,9 @@ def add_user(username,password,display_name,picture):
         return None
 
 def add_message(sender_username, chat_name, content):
-    s = UserProfile.objects.filter(user=User.objects.filter(username=sender_username)[0])[0]
-    c = Chat.objects.filter(name=chat_name)[0]
-    m = Message.objects.get_or_create(content=content, chat=c, sender=s)[0]
+    s = UserProfile.objects.get(user=User.objects.get(username=sender_username))
+    c = Chat.objects.get(name=chat_name)
+    m = Message.objects.create(content=content, chat=c, sender=s)
     m.save()
     return m
 
