@@ -13,22 +13,38 @@ My Profile - {{current_user}}
 <div class="container-fluid box-size">
     <div class="row justify-content-center align-items-center g-2">
         <div class="col">
-            <img src="{% static 'images/classhat.jpg' %}" class="img-fluid rounded-top" alt="" height="auto" width = "auto"></div>
+            {% if current_user.picture %}
+                <img src="{{current_user.picture.url}}" class="img-fluid rounded-top" alt="" height="auto" width = "auto"></div>
+            {% else %}
+                <img src="{% static 'images/classhat.jpg' %}" class="img-fluid rounded-top" alt="" height="auto" width = "auto"></div>
+            {% endif %}
+
         <div class="col membercol">
             <ul class = "ultext">
-                <li>Name</li>
-                <li>Display name</li>
+                <li>Name: {{current_user}}</li>
+                <li>Display name: {{current_user.display_name}}</li>
             </ul>
         </div>
     </div>
     <div class="row justify-content-between align-items-center g-2">
         <div class="col">
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Enter a new display name">
-              <button class="btn btn-outline-secondary" type="button" id="button-addon2">Change</button>
+
             </div>
         <div class="col align-items-center">
-        <button type="submit" onclick="return confirm('Are You sure You want to Delete Your Account?')" class="btn btn-danger d-block">Delete Account</button>
+            <form method="post">
+                <input type="hidden" name="form_type" value="display_name_form">
+                {% csrf_token %}
+                {{ display_name_form.as_p }}
+                <input type="submit" value="Submit" class ="btn btn-secondary" />
+            </form>
+            <form method="post" enctype="multipart/form-data">
+                <input type="hidden" name="form_type" value="pic_form">
+                {% csrf_token %}
+                {{ pic_form.as_p }}
+                <input type="submit" value="Submit" class ="btn btn-secondary" />
+            </form>
+        <a class="btn btn-danger d-block" href="{% url 'chat:delete_account' %}" onclick = "return confirm('Are you sure you want to delete?')">Delete Account</a>
         </div>
     </div>
 </div>
