@@ -6,7 +6,11 @@
 {% endblock %}
 
 {% block content_title %}
-My Profile - {{current_user}}
+<nav class="navbar bg-tertiary w-100">
+    <div class="container-fluid">
+        <h2 class="text-light" href="#">My Profile - {{current_user}}</h2>
+    </div>
+  </nav>
 {% endblock %}
 
 {% block content_block %}
