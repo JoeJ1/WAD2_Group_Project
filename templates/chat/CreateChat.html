@@ -30,7 +30,7 @@ Create New Chat
     <div class="col">
       <div class = "mycol">Members added
         <div>
-          <ul class = "lists" id="memberList" style = "list-style-type: none; margin:0;padding:0; height:12rem;"></ul>
+          <ul class = "list-group" id="memberList"></ul>
         </div>
       </div>
       </div>
@@ -103,16 +103,14 @@ Create New Chat
             for (let i = 0; i < members.length; i++) {
               const li = document.createElement("li");
               const close = document.createElement("a");
-              close.textContent="close";
-              close.classList.add('material-symbols-outlined');
-              close.classList.add("float-right");
-              close.classList.add("close-button");
+              close.classList.add('btn-close');
+              close.classList.add('float-end');
               close.onclick=function(){
                   members.splice(i,1);
                   renderMembers();
               }
               li.textContent = members[i];
-              li.classList.add('profile-chip');
+              li.classList.add('list-group-item');
               li.appendChild(close);
               memberList.appendChild(li);
             }

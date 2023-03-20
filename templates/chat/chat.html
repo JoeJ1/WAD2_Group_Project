@@ -28,23 +28,11 @@
 {{ this_username|json_script:"this-username" }}
 {{ chat_name_slug|json_script:"chat-slug" }}
 <body>
-    <div class="row row-tall h-100">
-        <div class="col h-100">
-            <div class="chat-message-list">
-            {% for m in messages %}
-                {% if m.sender.user.username == this_username %}
-                <div class="message-container" style="display:flex; justify-content:end">
-                    <div class="message" style="float:right">
-                {% else %}
-                <div class="message-container" style="display:flex; justify-content:start">
-                    <div class="message" style="float:left">
-                {% endif %}
-                    {{m.sender.display_name}}: {{m.content}}
-                    </div>
-                </div>
-            {% endfor %}
+    <div class="row h-100">
+        <div class="col h-75 w-100 position-relative">
+            <div id="messagesList container h-75 d-block" class="chat-message-list">
             </div>
-            <div class="input-group mb-5 position-sticky">
+            <div class="input-group mb-5 bottom-0 w-100 d-flex">
               <input type="text" class="form-control" placeholder="Your message here" id="message-input">
               <button class="btn btn-outline-secondary" type="button" id="send-button">Send</button>
             </div>
@@ -52,6 +40,7 @@
     </div>
     <script>
         $(document).ready(function() {
+            window.setInterval(updateMessages, 2000);
             $("#send-button").click(function() {
                 let username = "{{this_username|escapejs}}";
                 let slug = "{{chat_name_slug|escapejs}}";
@@ -60,9 +49,27 @@
                     {'content':content,'username':username,'chat_slug':slug},
                     function(data) {
                         alert(data)
-                    })
-            })
+                    });
+            });
         });
+
+        function updateMessages() {
+            let slug = "{{chat_name_slug|escapejs}}";
+            $.get('get_messages',
+                {'chat_slug':slug},
+                function(data) {
+                    let messages = JSON.parse(data);
+                    let messagesList = $("#messagesList");
+                    messagesList.innerHTML = "";
+                    const m = document.createElement("li");
+                    for(let i=0; i < messages.length; i++) {
+                        messages[i].content;
+                        m.textContent=messages[i].username+messages[i].content;
+                        messagesList.append(m.textContent);
+                    }
+                });
+        }
+
     </script>
 </body>
 {% endblock %}

@@ -142,19 +142,20 @@ def user_login(request):
 def main_page(request):
     return render(request, "chat/mainpage.html", context=get_user_chats(request))
 
-@login_required
+#@login_required
 def send_message(request, chat_name_slug):
     username = request.GET['username']
     content = request.GET['content']
     chat_slug = request.GET['chat_slug']
     chat = Chat.objects.get(slug=chat_slug)
     sender = UserProfile.objects.get(user=request.user)
-    m = Message.objects.create(content=content, chat=chat, sender=sender)
-    m.save()
-    return get_messages(request)
+    if(content):
+        m = Message.objects.create(content=content, chat=chat, sender=sender)
+        m.save()
+    return get_messages(request, chat_name_slug)
 
-@login_required
-def get_messages(request):
+#@login_required
+def get_messages(request, chat_name_slug):
     chat_slug = request.GET['chat_slug']
     messages = Message.objects.filter(chat=Chat.objects.get(slug=chat_slug))
     messages_list = [{'time_stamp':str(m.time_stamp), 'sender':m.sender.user.username, 'content':m.content} for m in messages]
