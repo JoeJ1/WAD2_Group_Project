@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content_title %}
-{{chat_name}}
+{{chat_name}} - Home
 {% if current_user == owner %}
 <div class="btn-group float-right" role="group" aria-label="Chat Buttons">
     <a class="btn btn-primary" href="{% url 'chat:chatroom' chat_name_slug %}">Home</a>
