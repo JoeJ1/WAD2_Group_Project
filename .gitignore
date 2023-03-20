@@ -133,3 +133,6 @@ dmypy.json
 
 # Migrations shouldn't be commited probably
 chat/migrations/*
+# Keep commiting this too oops
+media/*
+

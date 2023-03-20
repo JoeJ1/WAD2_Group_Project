@@ -134,9 +134,9 @@ def user_login(request):
                 return redirect(reverse('chat:chat'))
         else:
             print(f"Invalid login details: {username}, {password}")
-            return render(request, "chat/login.html", context={})
+            return render(request, "chat/login.html", context={'invalid_login':True})
     else:
-        return render(request, "chat/login.html", context={})
+        return render(request, "chat/login.html", context={'invalid_login':False})
 
 @login_required
 def main_page(request):
