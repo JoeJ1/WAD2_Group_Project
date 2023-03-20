@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.shortcuts import redirect
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
 from chat import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -25,4 +27,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', lambda request: redirect('/chat/auth/login/'), name='login'), # needs to redirect to main page if logged in
     path('', include("allauth.urls")),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
