@@ -14,11 +14,11 @@
                     </a>
                 <div class="d-flex">
                     <a id="createChatButton" href="{% url 'chat:create' %}" class="btn btn-outline-light me-1">
-                            Create Chat
+                        <i class="bi bi-plus-lg"></i> Create
                     </a>
                     <div class="dropdown">
                         <a class="btn btn-outline-light" type="button" data-bs-toggle="dropdown">
-                            Profile
+                            <i class="bi bi-person-fill"></i> Profile
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="{% url 'chat:profile' %}">Settings</a></li>
@@ -36,32 +36,15 @@
                             {% get_chat_list request chat_name %}
                         </div>
                     </div>
-                    <div class="col pt-3">
-                        <div class="alert alert-primary" role="alert">
-                            <h1 class="fs-3">
+                    <div class="col ps-0 pe-0">
+                        <div class="p-3 navbar navbar-expand-lg bg-body-tertiary">
+                            <h1 class="fs-3 text-light">
                             {% block content_title %}
                             {% endblock %}
                             </h1>
                         </div>
-                                    <script>/* When the user clicks on the button, 
-                toggle between hiding and showing the dropdown content */
-                function myFunction() {
-                document.getElementById("myDropdown").classList.toggle("show");
-                }
-                
-                // Close the dropdown if the user clicks outside of it
-                window.onclick = function(event) {
-                if (!event.target.matches('.dropbtn')) {
-                    var dropdowns = document.getElementsByClassName("dropdown-content");
-                    var i;
-                    for (i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                    }
-                }
-            }</script>
+    <div class="container-fluid p-3 h-100">
     {% block content_block %}
     {% endblock %}
+    </div>
 {% endblock %}
