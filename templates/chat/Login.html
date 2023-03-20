@@ -12,6 +12,25 @@
 
 {% block body_block %}
 <main class="form-signin w-100 m-auto text-center">
+    {% if invalid_login %}
+
+<div class="modal show text-dark">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title">Invalid Login</h1>
+        <button type="button" class="btn-close" aria-label="Close" onclick="$('.modal').removeClass('show').addClass('fade');"></button>
+      </div>
+      <div class="modal-body">
+          Invalid login detail were supplied.  Please try again or create an account.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="$('.modal').removeClass('show').addClass('fade');">Okay</button>
+      </div>
+    </div>
+  </div>
+</div>
+    {% endif %}
     <div class="card bg-primary">
         <div class="card-body">
             <form id="login_form" method="post" action="{% url 'chat:login' %}">

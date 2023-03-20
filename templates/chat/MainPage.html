@@ -1,11 +1,11 @@
 {% extends 'chat/chattemplates.html'%}
 {% load staticfiles %}
 
-{% block title_block_2 %}
+{% block title_block %}
     View chats
 {% endblock %}
 
-{% block includes_block_2 %}
+{% block includes_block %}
 <link rel="stylesheet" href="{% static 'styles/mainpage.css' %}">
 {% endblock %}
 
@@ -13,7 +13,7 @@
     My Chats
 {% endblock %}
 
-{% block body_block_2 %}
+{% block content_block %}
     <div class="container text-center">
       <div class = "row row-cols-lg-4 row-cols-md-3 row-cols-sm-1">
 
@@ -21,11 +21,11 @@
             {% for chat in chats %}
             <a href="{% url 'chat:chatroom' chat.slug %}">
               <div class = "col">
-                <div class="card bg-primary text-light p-2 m-1">
+                <div class="card bg-primary text-light p-2 m-1 h-25">
                     {% if chat.image %}
-                    <img  class = "card-img-top" src = "{{chat.image.url}}" alt = "chat image">
+                    <img  class = "card-img-top rounded object-fit-cover" width="200" height="150" src = "{{chat.image.url}}" alt = "chat image">
                     {% else %}
-                    <img  class = "card-img-top" src = "{% static 'images/classhat.jpg' %}" alt = "teacher hat">
+                    <img  class = "card-img-top rounded img-fluid" src = "{% static 'images/classhat.jpg' %}" alt = "teacher hat">
                     {% endif %}
                     <div class ="card-body">
                         <p class="card-text text-truncate">{{ chat.name }}</p>
