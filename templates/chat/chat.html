@@ -51,7 +51,7 @@
     <script>
         $(document).ready(function() {
             updateMessages();
-            window.setInterval(updateMessages, 1000);
+            //window.setInterval(updateMessages, 1000);
             $("#send-button").click(function() {
                 let username = "{{this_username|escapejs}}";
                 let slug = "{{chat_name_slug|escapejs}}";
@@ -59,6 +59,38 @@
                 $.get('send_message', {'content':content,'username':username,'chat_slug':slug}, updateMessages);
             });
         });
+
+        function createMessage(sender, content) {
+            let m_container = document.createElement("div");
+            let m_card = document.createElement("div");
+            let m = document.createElement("div");
+            let m_title = document.createElement("h5");
+            let m_body = document.createElement("p");
+
+            m_container.classList.add('w-100', 'container', 'd-inline-flex', 'pb-2');
+            m_card.classList.add('card', 'w-50');
+            m.classList.add('card-body');
+            m_title.classList.add('card-title');
+            m_body.classList.add('card-text');
+
+            if(sender=="{{this_username|escapejs}}") {
+                m_container.classList.add('justify-content-end');
+                m_card.classList.add('align-items-end', 'bg-primary', 'text-light');
+                m_card.style.borderTopRightRadius=0;
+            } else {
+                m_card.style.borderTopLeftRadius=0;
+                m_card.classList.add('bg-secondary', 'text-light');
+            }
+
+            m_title.textContent=sender;
+            m_body.textContent=content;
+
+            m.appendChild(m_title);
+            m.appendChild(m_body);
+            m_card.appendChild(m);
+            m_container.appendChild(m_card);
+            return(m_container);
+        }
 
         function updateMessages() {
             let slug = "{{chat_name_slug|escapejs}}";
@@ -69,10 +101,11 @@
                     let messagesList = $("#messagesList");
                     messagesList.empty();
                     for(let i=0; i < messages.length; i++) {
-                        m = document.createElement("li");
+                        /*let m = document.createElement("div");
+                        m.addClass('card');
                         messages[i].content;
-                        m.textContent=messages[i].sender+":"+messages[i].content;
-                        messagesList.append(m);
+                        m.textContent=messages[i].sender+":"+messages[i].content;*/
+                        messagesList.append(createMessage(messages[i].sender,messages[i].content));
                     }
                 });
         }

@@ -10,7 +10,9 @@
 {% endblock %}
 
 {% block content_title %}
+    <h2 class="text-light">
     My Chats
+    </h2>
 {% endblock %}
 
 {% block content_block %}
@@ -21,7 +23,7 @@
             {% for chat in chats %}
             <a href="{% url 'chat:chatroom' chat.slug %}">
               <div class = "col">
-                <div class="card bg-primary text-light p-2 mr-1 h-25">
+                <div class="card bg-primary text-light p-2 mr-1 mb-2 h-25">
                     {% if chat.image %}
                     <img  class = "card-img-top rounded object-fit-cover" width="200" height="150" src = "{{chat.image.url}}" alt = "chat image">
                     {% else %}
