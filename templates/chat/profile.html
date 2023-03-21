@@ -18,9 +18,10 @@
     <div class="row justify-content-center align-items-center g-2">
         <div class="col">
             {% if current_user.picture %}
-                <img src="{{current_user.picture.url}}" class="img-fluid rounded-top" alt="" height="auto" width = "auto"></div>
+            <img  class = "card-img-top rounded object-fit-cover" width="200" height="200" src="{{current_user.picture.url}}"alt = "chat image">
+        </div>
             {% else %}
-                <img src="{% static 'images/classhat.jpg' %}" class="img-fluid rounded-top" alt="" height="auto" width = "auto"></div>
+                <img src="{% static 'images/classhat.jpg' %}" class="card-img-top rounded object-fit-cover" alt="" width="200" height="200"></div>
             {% endif %}
 
         <div class="col membercol">
