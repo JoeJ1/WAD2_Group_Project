@@ -1,4 +1,5 @@
 :root{
+    /* overriding bootstrap default colours for a custom theme */
     --bs-primary: #6e8fc8; !important;
     --bs-primary-rgb: 110, 143, 200; !important;
     --bs-secondary: #91b1f7; !important;
