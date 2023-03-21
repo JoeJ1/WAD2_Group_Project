@@ -162,7 +162,7 @@ def send_message(request, chat_name_slug):
 def get_messages(request, chat_name_slug):
     chat_slug = request.GET['chat_slug']
     messages = Message.objects.filter(chat=Chat.objects.get(slug=chat_slug))
-    messages_list = [{'time_stamp':str(m.time_stamp), 'sender':m.sender.user.username, 'content':m.content} for m in messages]
+    messages_list = [{'pic':m.sender.picture.url,'time_stamp':str(m.time_stamp), 'sender':m.sender.user.username, 'content':m.content} for m in messages]
     return HttpResponse(json.dumps(messages_list))
 
 def sign_up(request):
