@@ -21,11 +21,13 @@
         <div class="row justify-content-center align-items-top g-2">
             <div class = "col colpadding">
                 <div class="membercol">
-                    <label for="ChatName" class="form-label">Add Member</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="memberInput" placeholder="Enter Member Name">
-                    </div>
-                    <button type="button" id="addMemberButton" class="btn btn-primary" onclick="addMember()" id="addMemberButton">Add</button>
+                    {% if current_user == owner %}
+                        <label for="ChatName" class="form-label">Add Member</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="memberInput" placeholder="Enter Member Name">
+                        </div>
+                        <button type="button" id="addMemberButton" class="btn btn-primary" onclick="addMember()" id="addMemberButton">Add</button>
+                    {% endif %}
                 </div>
             </div>
 
