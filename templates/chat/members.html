@@ -1,4 +1,4 @@
-{% extends 'chat/chattemplates.html'%}
+{% extends 'chat/roomtemplate.html'%}
 {% load staticfiles %}
 
 {% block title_block %}
@@ -10,34 +10,8 @@
 <link rel="stylesheet" href="{% static 'styles/members.css' %}">
 {% endblock %}
 
-{% block content_title %}
-<nav class="navbar bg-tertiary w-100">
-  <div class="container-fluid">
-      <h2 class="text-light" href="#">{{chat_name}} - Members</h2>
-    <div class="d-flex" id="navbarText">
-      <ul class="navbar-nav flex-row me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-            <a class="nav-link active text-light" aria-current="page" href="{% url 'chat:chatroom' chat_name_slug%}">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-light" href="{% url 'chat:members' chat_name_slug %}">Members</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="{% url 'chat:files' chat_name_slug %}">Files</a>
-        </li>
-{% if current_user == owner %}
-        <li class="nav-item">
-          <a class="nav-link text-light" href="{% url 'chat:delete' chat_name_slug %}">Delete</a>
-        </li>
-{% else %}
-        <li class="nav-item">
-          <a class="nav-link text-light" href="{% url 'chat:leave' chat_name_slug %}">Leave</a>
-        </li>
-{% endif %}
-      </ul>
-    </div>
-  </div>
-</nav>
+{% block content_name %}
+- Members
 {% endblock %}
 
 {% block content_block %}

@@ -1,0 +1,60 @@
+{% extends 'chat/chattemplates.html' %}
+{% load staticfiles %}
+
+{% block content_title %}
+{{ this_username|json_script:"this-username" }}
+{{ chat_name_slug|json_script:"chat-slug" }}
+<nav class="navbar bg-tertiary w-100">
+  <div class="container-fluid">
+      <h2 class="text-light" href="#">{{chat_name}}{% block content_name %} {% endblock %}</h2>
+    <div class="d-flex" id="navbarText">
+      <ul class="navbar-nav flex-row me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link active text-light" aria-current="page" href="{% url 'chat:chatroom' chat_name_slug%}">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-light" href="{% url 'chat:members' chat_name_slug %}">Members</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="{% url 'chat:files' chat_name_slug %}">Files</a>
+        </li>
+{% if current_user == owner %}
+        <li class="nav-item">
+            <!--<a class="nav-link text-light" href="{% url 'chat:delete' chat_name_slug %}">Delete</a>-->
+            <a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#deleteLeaveModal">Delete</a>
+        </li>
+{% else %}
+        <li class="nav-item">
+            <a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#deleteLeaveModal">Leave</a>
+        </li>
+{% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="modal fade" id="deleteLeaveModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+{% if current_user == owner %}
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Are you sure you want to delete this chat?</h1>
+{% else %}
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Are you sure you want to leave this chat?</h1>
+{% endif %}
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        This action cannot be undone.
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</a>
+{% if current_user == owner %}
+        <a type="button" class="btn btn-danger" href="{% url 'chat:delete' chat_name_slug %}">Delete Chat</a>
+{% else %}
+        <a type="button" class="btn btn-primary" href="{% url 'chat:leave' chat_name_slug%}">Leave Chat</a>
+{% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
