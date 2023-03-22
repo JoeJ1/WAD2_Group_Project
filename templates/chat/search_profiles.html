@@ -1,0 +1,33 @@
+{% extends 'chat/chattemplates.html'%}
+{% load staticfiles %}
+
+{% block title_block %}
+    Search Results
+{% endblock %}
+
+{% block content_title %}
+    <nav class="navbar bg-tertiary w-100">
+        <div class="container-fluid">
+            {% if searched %}
+                <h2 class="text-light" href="#">Search Results for... {{searched}}</h2>
+                {% else %}
+                <h2 class="text-light" href="#">You didn't search for anything!</h2>
+            {% endif %}
+            
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content_block %}
+{% if searched %}
+    {% if profiles|length == 0 %}
+        <h2 class="text-dark" href="#">No results found!</h2> 
+        {% else %}
+        {% for profile in profiles %}
+            <h2 class="text-dark" href="#">Username: {{profile}}, Display Name: {{profile.display_name}}</h2> </br>
+        {% endfor %}
+    {% endif %}
+{% else %}
+    <h2 class="text-dark" href="#">You didn't search for anything!</h2> 
+{% endif %}
+{% endblock %}

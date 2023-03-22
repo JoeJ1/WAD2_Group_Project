@@ -14,7 +14,7 @@ CHAT_DESCRIPTION_LEN = 240
 class UserProfile(models.Model):
     user = models.OneToOneField(DjangoUser, on_delete=models.CASCADE)
     display_name = models.CharField(max_length=50)
-    picture = models.ImageField(upload_to = 'profile_images/', blank=True)
+    picture = models.ImageField(upload_to = 'profile_images/', blank=True, default='profile_images/logo.png')
 
     def __str__(self):
         return self.user.username

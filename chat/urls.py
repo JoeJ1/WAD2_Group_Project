@@ -11,6 +11,7 @@ urlpatterns = [
     path('auth/login/', views.user_login, name='login'),
     path('auth/logout/', views.user_logout, name='logout'),
     path('auth/signup/', views.sign_up, name='signup'),
+    path('search_profiles/', views.search_profiles, name='search_profiles'),
     path('profile/', views.profile, name='profile'),
     path('test/', views.test, name='test'),
     path('chatroom/<slug:chat_name_slug>/', views.chat, name='chatroom'),
