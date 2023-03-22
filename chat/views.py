@@ -6,6 +6,22 @@ from django.contrib.auth import authenticate, login, logout
 from chat.models import Chat, File, UserProfile, Message, DjangoUser
 from chat.forms import ChangeUserDisplayName, FileForm, UserForm, UserProfileForm, ChatForm, ChangeUserProfilePic
 
+
+
+@login_required
+def search_profiles(request):
+    context_dict = {}
+    
+    if request.method == "POST":
+        searched = request.POST['searched']
+        profiles = UserProfile.objects.filter(display_name__contains=searched)
+        context_dict['searched'] = searched
+        context_dict['profiles'] = profiles
+        return render(request, 'chat/search_profiles.html', context_dict)
+    else:
+        return render(request, 'chat/search_profiles.html', context_dict)
+        
+
 @login_required
 def leave_group_chat(request, chat_name_slug):
     try:
