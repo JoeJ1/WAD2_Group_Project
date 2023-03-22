@@ -49,6 +49,9 @@ def get_user_chats(request):
         context_dict['chats'] = None
     return context_dict
 
+@login_required
+def google_login(request):
+    return redirect(reverse('chat:chat')) 
 
 @login_required
 def members(request, chat_name_slug):
