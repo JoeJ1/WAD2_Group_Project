@@ -16,7 +16,9 @@
     {{ form.as_p }}
     <input type="submit" value="Submit" class ="btn btn-secondary" />
 </form>
-
+{%else%}
+<h2>Only Owners can add new files</h2>
+<p>If you would like to add a file.<br>Please contact {{ owner }}</p>
 {% endif %}
 {% if files %}
     {% for file in files %}

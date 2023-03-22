@@ -6,6 +6,17 @@
 {% endblock %}
 
 {% block includes_block %}
+<style>
+  .createBox{
+    background-color:var(--bs-primary);
+    border-radius:10px;
+}
+
+.backgroundbox{
+  background-color:white;
+  border-radius:10px;
+}
+</style>
 {% endblock %}
 
 {% block content_title %}
@@ -14,20 +25,20 @@
 
 
 {% block content_block %}
-
+<div class="container m-3 createBox p-3">
 <form id="user_form" method="post" action="" enctype="multipart/form-data">
 {% csrf_token %}
-<div class="container-fluid p-2 g-2 box">
-  <div class="row g-5 justify-content-center align-items-top myrows mb-3">
-    <div class="col">
-      <div class = "mycol">Members added
+<div class="container-fluid p-2 g-2 box mx-3">
+  <div class="row g-5 justify-content-center align-items-top myrows mb-3 ">
+    <div class="col p-2">
+      <div class = "mycol backgroundbox p-2" style="height:12rem">Members added
         <div>
           <ul class = "list-group" id="memberList"></ul>
         </div>
       </div>
       </div>
-    <div class="col">
-      <div class="container-fluid" style="padding:0px;">
+    <div class="col p-2">
+      <div class="container-fluid backgroundbox p-2">
         <div class = "mycol" style="margin-bottom:10px;">
           <div class="mb-3">
           <label for="ChatName" class="form-label">Chat Name</label>
@@ -46,8 +57,8 @@
 
 
   <div class="row g-6 justify-content-center align-items-top myrows mb-3">
-    <div class="col mb-3">
-      <div class="mycol">
+    <div class="col mb-3 p-2">
+      <div class="mycol backgroundbox p-2">
         <label for="ChatName" class="form-label">Add Member</label>
         <div class="input-group mb-3">
           <input type="text" id="memberInput" class="form-control" placeholder="Enter Member Name">
@@ -115,8 +126,8 @@
 
       </div>
     </div>
-    <div class="col">
-      <div class = "mycol">
+    <div class="col p-2">
+      <div class = "mycol backgroundbox p-2">
         <label for="UploadImage" class="form-label">Upload Background Image</label>
         <input class="form-control" name="image" id="UploadImage" type="file">
       </div>
@@ -129,4 +140,5 @@
   </div>
 </div>
 </form>
+</div>
 {% endblock %}

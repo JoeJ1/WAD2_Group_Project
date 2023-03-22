@@ -6,8 +6,6 @@
 {% endblock %}
 
 {% block includes_block %}
-<link rel="stylesheet" href="{% static 'styles/mainpage.css' %}">
-<link rel="stylesheet" href="{% static 'styles/members.css' %}">
 {% endblock %}
 
 {% block content_name %}
@@ -27,7 +25,13 @@
                             <input type="text" class="form-control" id="memberInput" placeholder="Enter Member Name">
                         </div>
                         <button type="button" id="addMemberButton" class="btn btn-primary" onclick="addMember()" id="addMemberButton">Add</button>
+                    
+                    {% else %}
+
+                    <h2>Only Owners can add new members</h2>
+                    <p>If you would like to add someone.<br>Please contact {{ owner }}</p>
                     {% endif %}
+                    
                 </div>
             </div>
 
