@@ -12,16 +12,16 @@
 {{ this_username|json_script:"this-username" }}
 {{ chat_name_slug|json_script:"chat-slug" }}
 <body>
-    <div class="row h-100">
+    <div class="row h-75" style = "overflow: scroll;">
         <div class="col h-75 w-100 position-relative">
-            <div id="messagesList" class="d-block chat-message-list h-75 w-100 overflow-scroll scrollable">
-            </div>
-            <div class="input-group mb-5 bottom-0 w-100 d-flex">
-              <input type="text" class="form-control" placeholder="Your message here" id="message-input">
-              <button class="btn btn-outline-secondary" type="button" id="send-button"><i class="bi bi-send-fill"></i></button>
+            <div id="messagesList" class="d-block chat-message-list h-75 w-100">
             </div>
         </div>
     </div>
+    <div class="input-group mb-5 bottom-0 w-100 d-flex">
+        <input type="text" class="form-control" placeholder="Your message here" id="message-input">
+        <button class="btn btn-outline-secondary" type="button" id="send-button"><i class="bi bi-send-fill"></i></button>
+      </div>
     <script>
         // Must define these consts here so they can be accessed
         // by the external script

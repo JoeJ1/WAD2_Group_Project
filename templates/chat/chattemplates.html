@@ -27,25 +27,26 @@
                     </div>
                 </div>
             </div>
-            </nav>
-            <main class="h-100">
-            <div class="container-fluid h-100">
-                <div class="row row-tall h-100" style = "background-image: url('static/images/no_words_logo.png')">
-                    <div class="col col-2 d-none d-md-block bg-primary h-100">
-                        <div class="list-group pt-3 h-75 overflow-scroll">
-                            {% get_chat_list request chat_name %}
-                        </div>
+        </nav>
+    <main style = "height:100%;">
+        <div class="container-fluid h-100">
+            <div class="row row-tall h-100" style = "background-image: url('static/images/no_words_logo.png')">
+                <div class="col col-2 d-none d-md-block bg-primary h-100">
+                    <div class="list-group pt-3 h-75 overflow-scroll">
+                        {% get_chat_list request chat_name %}
                     </div>
-                    <div class="col ps-0 pe-0">
-                        <div class="pt-3 ps-3 pe-3 pb-0 navbar navbar-expand-lg bg-tertiary" style="background-color:var(--bs-tertiary);">
-                            {% block content_title %}
-                            {% endblock %}
-                        </div>
-
-                        <div class="container-fluid p-3 h-100">
-                        {% block content_block %}
+                </div>
+                <div class="col ps-0 pe-0 h-100">
+                    <div class="pt-3 ps-3 pe-3 pb-0 navbar navbar-expand-lg bg-tertiary" style="background-color:var(--bs-tertiary);">
+                        {% block content_title %}
                         {% endblock %}
-                        </div>
                     </div>
-            </div>
+
+                    <div class="container-fluid p-3 h-75">
+                    {% block content_block %}
+                    {% endblock %}
+                    </div>
+                </div>
+        </div>
+    </main>
 {% endblock %}
