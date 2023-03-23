@@ -277,7 +277,7 @@ def create_page(request):
     else:
         chat_form = ChatForm()
         
-    return render(request,'chat/CreateChat.html',context=context_dict)
+    return render(request,'chat/createchat.html',context=context_dict)
 
 @login_required
 def user_logout(request):

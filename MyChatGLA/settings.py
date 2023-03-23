@@ -28,7 +28,7 @@ SECRET_KEY = '&hi$z(-4=xefi47jl(jjlq!&9uapkn#mh&olu*e(q1_!x=y1=3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mychatgla.pythonanywhere.com','localhost', '127.0.0.1']
 
 LOGIN_URL='/chat/auth/login'
 
