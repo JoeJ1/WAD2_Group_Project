@@ -78,8 +78,24 @@ def members(request, chat_name_slug):
 def remove_member(request, chat_name_slug, username):
     user = DjangoUser.objects.get(username=username)
     userProfile = UserProfile.objects.get(user=user)
+    chat = Chat.objects.get(slug=chat_name_slug)
+    chat.users.remove(userProfile)
+    chat.save()
     Chat.objects.get(slug=chat_name_slug).users.remove(userProfile)
-    return members(request, chat_name_slug)
+    return redirect(reverse('chat:members', args=(chat_name_slug,)))
+
+
+@login_required
+def add_member(request, chat_name_slug, username):
+    try:
+        user = DjangoUser.objects.get(username=username)
+    except:
+        return redirect(reverse('chat:members', args=(chat_name_slug,)))
+    userProfile = UserProfile.objects.get(user=user)
+    chat = Chat.objects.get(slug=chat_name_slug)
+    chat.users.add(userProfile)
+    chat.save()
+    return redirect(reverse('chat:members', args=(chat_name_slug,)))
 
 @login_required
 def delete_account(request):

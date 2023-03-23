@@ -23,6 +23,7 @@ urlpatterns = [
     path('chatroom/<slug:chat_name_slug>/get_messages', views.get_messages, name='get_messages'),
     path('chatroom/<slug:chat_name_slug>/send_message', views.send_message, name='send_message'),
     path('chatroom/<slug:chat_name_slug>/remove_member/<str:username>', views.remove_member, name='remove_member'),
+    path('chatroom/<slug:chat_name_slug>/add_member/<str:username>', views.add_member, name='add_member'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
