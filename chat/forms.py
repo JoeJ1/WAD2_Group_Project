@@ -50,7 +50,11 @@ class ChangeUserDisplayName(forms.ModelForm):
     class Meta:
         model = UserProfile
         widgets = {
-            'display_name' : forms.TextInput(attrs= {'class':'form-control', 'placeholder' : 'Enter a new display name.'})
+            'display_name' : forms.TextInput(attrs= {'class':'form-control mt-2', 'placeholder' : 'Enter a new display name.'})
+        }
+
+        labels = {
+            'display_name' : ''
         }
         fields = ['display_name']
         
@@ -58,4 +62,10 @@ class ChangeUserDisplayName(forms.ModelForm):
 class ChangeUserProfilePic(forms.ModelForm):
     class Meta:
         model = UserProfile
+        widgets = {
+            'picture' : forms.ClearableFileInput(attrs= {'class':'form-control mt-2', 'placeholder' : 'Upload a new profile picture'})
+        }
         fields = ['picture']
+        labels = {
+            'picture' : ''
+        }

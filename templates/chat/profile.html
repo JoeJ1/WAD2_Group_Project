@@ -32,25 +32,43 @@
         </div>
     </div>
     <div class="row justify-content-between align-items-center g-2">
-        <div class="col">
-            <div class="input-group mb-3">
-
-            </div>
         <div class="col align-items-center">
             <form method="post">
+                <div class="input-group">
                 <input type="hidden" name="form_type" value="display_name_form">
                 {% csrf_token %}
-                {{ display_name_form.as_p }}
-                <input type="submit" value="Submit" class ="btn btn-secondary" />
+                {{ display_name_form }}
+                <input type="submit" value="Submit" class ="btn btn-secondary mt-2" />
+                </div>
             </form>
             <form method="post" enctype="multipart/form-data">
+                <div class="input-group">
                 <input type="hidden" name="form_type" value="pic_form">
                 {% csrf_token %}
-                {{ pic_form.as_p }}
-                <input type="submit" value="Submit" class ="btn btn-secondary" />
+                {{ pic_form }}
+                <input type="submit" value="Submit" class ="btn btn-secondary mt-2" />
+
+                </div>
             </form>
-        <a class="btn btn-danger d-block" href="{% url 'chat:delete_account' %}" onclick = "return confirm('Are you sure you want to delete?')">Delete Account</a>
+        <a class="btn btn-danger d-block mt-5" href="#" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">Delete Account</a>
         </div>
     </div>
+</div>
+<div class="modal fade" id="deleteAccountModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Are you sure you want to delete your account?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        This action cannot be undone.
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</a>
+        <a type="button" class="btn btn-danger" href="{% url 'chat:delete_account' %}">Delete Account</a>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}

@@ -23,9 +23,11 @@
     {% if profiles|length == 0 %}
         <h2 class="text-dark" href="#">No results found!</h2> 
         {% else %}
+        <ul class="list-group">
         {% for profile in profiles %}
-            <h2 class="text-dark" href="#">Username: {{profile}}, Display Name: {{profile.display_name}}</h2> </br>
+        <li class="list-group-item"><h2 class="text-dark" href="#">Username: {{profile}}, Display Name: {{profile.display_name}}</h2></li>
         {% endfor %}
+        </ul>
     {% endif %}
 {% else %}
     <h2 class="text-dark" href="#">You didn't search for anything!</h2> 
