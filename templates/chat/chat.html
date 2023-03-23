@@ -12,9 +12,9 @@
 {{ this_username|json_script:"this-username" }}
 {{ chat_name_slug|json_script:"chat-slug" }}
 <body>
-    <div class="row h-75" style = "overflow: scroll;">
-        <div class="col h-75 w-100 position-relative">
-            <div id="messagesList" class="d-block chat-message-list h-75 w-100">
+    <div class="row h-100" style = "overflow: scroll;" id="messageListContainer">
+        <div class="col h-100 w-100 position-relative">
+            <div id="messagesList" class="d-block chat-message-list h-100 w-100">
             </div>
         </div>
     </div>

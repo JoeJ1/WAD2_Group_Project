@@ -1,7 +1,11 @@
+let messages;
+
 $(document).ready(function() {
     updateMessages();
     window.setInterval(updateMessages, 1000);
     $("#send-button").click(getMessages);
+    m = document.getElementById("messageListContainer");
+    m.scrollTop = m.scrollHeight;
 });
 
 function getMessages() {
@@ -11,6 +15,8 @@ function getMessages() {
         $.get('send_message', {'content':content,'username':username,'chat_slug':slug}, updateMessages);
     }
     message_input.val('');
+    m = document.getElementById("messageListContainer");
+    m.scrollTop = m.scrollHeight;
 }
 
 function createMessage(sender,content,pic) {
