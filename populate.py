@@ -146,8 +146,8 @@ if __name__ == '__main__':
     populate()
     print("DB populated")
     obj = Site.objects.get(id=1)
-    obj.domain="http://127.0.0.1:8000"
-    obj.name="http://127.0.0.1:8000"
+    obj.domain="https://mychatgla.pythonanywhere.com"
+    obj.name="https://mychatgla.pythonanywhere.com"
     obj.save()
     socialApp = SocialApp.objects.create(name = "GroupProject", client_id="992328428322-5dabhp72ve3ot8slfrgdu3t6hcn0775f.apps.googleusercontent.com", secret="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")
     socialApp.sites.set([obj])
