@@ -74,6 +74,12 @@ def members(request, chat_name_slug):
     print(user.get(), chat_owner)
     return render(request, 'chat/members.html', context_dict)
 
+@login_required
+def remove_member(request, chat_name_slug, username):
+    user = DjangoUser.objects.get(username=username)
+    userProfile = UserProfile.objects.get(user=user)
+    Chat.objects.get(slug=chat_name_slug).users.remove(userProfile)
+    return members(request, chat_name_slug)
 
 @login_required
 def delete_account(request):

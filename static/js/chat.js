@@ -6,8 +6,6 @@ $(document).ready(function() {
 
 function getMessages() {
     let message_input = $("#message-input");
-    //let username = "{{this_username|escapejs}}";
-    //let slug = "{{chat_name_slug|escapejs}}";
     let content = message_input.val();
     if(message_input.val().length>0) {
         $.get('send_message', {'content':content,'username':username,'chat_slug':slug}, updateMessages);
@@ -35,7 +33,7 @@ function createMessage(sender,content,pic) {
     }
 
     m_container.classList.add('w-100', 'container', 'd-inline-flex', 'pb-2');
-    m_card.classList.add('card', 'w-50');
+    m_card.classList.add('card', 'mw-50');
     m.classList.add('card-body');
     m_title.classList.add('card-title');
     m_body.classList.add('card-text', 'me-5', 'ms-5');
@@ -64,7 +62,6 @@ function createMessage(sender,content,pic) {
 }
 
 function updateMessages() {
-    //let slug = "{{chat_name_slug|escapejs}}";
     $.get('get_messages',
         {'chat_slug':slug},
         function(data) {
@@ -72,10 +69,6 @@ function updateMessages() {
             let messagesList = $("#messagesList");
             messagesList.empty();
             for(let i=0; i < messages.length; i++) {
-                /*let m = document.createElement("div");
-                m.addClass('card');
-                messages[i].content;
-                m.textContent=messages[i].sender+":"+messages[i].content;*/
                 messagesList.append(createMessage(messages[i].sender,messages[i].content, messages[i].pic));
             }
         });

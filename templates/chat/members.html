@@ -22,9 +22,9 @@
                     {% if current_user == owner %}
                         <label for="ChatName" class="form-label">Add Member</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" id="memberInput" placeholder="Enter Member Name">
+                            <input type="text" class="form-control" id="memberInput" placeholder="Enter Member Username">
+                            <button type="button" id="addMemberButton" class="btn btn-primary" onclick="addMember()" id="addMemberButton">Add</button>
                         </div>
-                        <button type="button" id="addMemberButton" class="btn btn-primary" onclick="addMember()" id="addMemberButton">Add</button>
                     
                     {% else %}
 
@@ -37,28 +37,20 @@
 
 
             <div class="col colpadding">
-                <div class="membercol">
-
-                    <h3>Owner: </h3>{{ owner }}, Display Name: {{owner.display_name}}</br></br>
-                    <h5>Members </h5>
-                    {% if current_user == owner %}
-                    <div class = "scrollable">
+                <h3>Owner: </h3>
+                <ul class="list-group">
+                    <li class="list-group-item">{{ owner.display_name }} ({{owner}})</li>
+                </ul>
+                <h5>Members </h5>
+                <ul class="list-group scrollable">
                     {% for user in chat_members %}
-                            {% if user != owner %}
-                                Username: {{ user }}, Display Name: {{user.display_name}} <a class="btn btn-danger" href="#">Remove</a></br></br>
-                            {% endif %}
+                        {% if user != owner %}
+                        <li class="list-group-item">
+                            {{ user.display_name }} ({{user}}) {% if current_user == owner %}<a class="btn btn-close float-end" href="{% url 'chat:remove_member' chat_name_slug=chat_name_slug username=user.user.username %}"></a> {% endif %}
+                        </li>
+                        {%endif%}
                         {% endfor %}
-                    </div>
-                    {% else %}
-                    <div class = "scrollable">
-                        {% for user in chat_members %}
-                            {% if user != owner %}
-                                Username: {{ user }}, Display Name: {{user.display_name}}</br></br>
-                            {% endif %}
-                        {% endfor %}  
-                    </div>
-                    {% endif %}
-                </div>
+                </ul>
             </div>
         </div>
     </div>
