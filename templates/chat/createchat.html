@@ -14,26 +14,24 @@
 <div class="container m-3 createBox p-3">
 <form id="user_form" method="post" action="" enctype="multipart/form-data">
 {% csrf_token %}
-<div class="container-fluid p-2 g-2 box mx-3">
+<div class="container-fluid p-2 g-2 box bg-primary w-75 rounded">
   <div class="row g-5 justify-content-center align-items-top myrows mb-3 ">
     <div class="col p-2">
-      <div class = "mycol backgroundbox p-2" style="height:12rem">Members added
-        <div>
+      <div class = "col overflow-scroll scrollable p-2 ms-2 text-light" style="height:12rem">Members added
           <ul class = "list-group" id="memberList"></ul>
-        </div>
       </div>
       </div>
-    <div class="col p-2">
+    <div class="col">
       <div class="container-fluid backgroundbox p-2">
-        <div class = "mycol" style="margin-bottom:10px;">
+        <div class = "row mb-2">
           <div class="mb-3">
-          <label for="ChatName" class="form-label">Chat Name</label>
+          <label for="ChatName" class="form-label text-light">Chat Name</label>
           <input type="text" class="form-control" id="ChatName" name="name" placeholder="Enter Chat Name" required>
         </div>
       </div>
-        <div class = "mycol">
+        <div class = "row mb-2">
           <div class="mb-3">
-            <label for="Chat-title" class="form-label" >Chat Description</label>
+            <label for="Chat-title" class="form-label text-light" >Chat Description</label>
             <input type="text" class="form-control" name="description" id="title" placeholder="Enter Chat Description" required>
           </div>
         </div>
@@ -45,7 +43,7 @@
   <div class="row g-6 justify-content-center align-items-top myrows mb-3">
     <div class="col mb-3 p-2">
       <div class="mycol backgroundbox p-2">
-        <label for="ChatName" class="form-label">Add Member</label>
+        <label for="ChatName" class="form-label text-light">Add Member</label>
         <div class="input-group mb-3">
           <input type="text" id="memberInput" class="form-control" placeholder="Enter Member Name">
           <button class="btn btn-primary" type="button" id="addMemberButton">Add</button>
@@ -65,7 +63,7 @@
     </div>
     <div class="col p-2">
       <div class = "mycol backgroundbox p-2">
-        <label for="UploadImage" class="form-label">Upload Background Image</label>
+        <label for="UploadImage" class="form-label text-light">Upload Background Image</label>
         <input class="form-control" name="image" id="UploadImage" type="file">
       </div>
     </div>
