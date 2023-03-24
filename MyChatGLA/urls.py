@@ -25,8 +25,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('chat/', include('chat.urls')),
     path('admin/', admin.site.urls),
-    path('google/login/callback/', views.google_login),
-    path('', lambda request: redirect('/chat/auth/login/'), name='login'), # needs to redirect to main page if logged in
+    path('', views.main_page), # needs to redirect to main page if logged in
     path('', include("allauth.urls")),
 ]
 
