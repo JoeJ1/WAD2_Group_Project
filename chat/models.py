@@ -14,7 +14,7 @@ CHAT_DESCRIPTION_LEN = 240
 class UserProfile(models.Model):
     user = models.OneToOneField(DjangoUser, on_delete=models.CASCADE)
     display_name = models.CharField(max_length=50)
-    picture = models.ImageField(upload_to = 'profile_images/', blank=True, default='profile_images/logo.png')
+    picture = models.ImageField(upload_to = 'profile_images/', blank=True, default='uploadpics/logo.png')
 
     def __str__(self):
         return self.user.username
@@ -63,8 +63,6 @@ class File(models.Model):
 
 @receiver(user_signed_up, sender=DjangoUser)
 def user_signed_up(request, user, **kwargs):
-    print(user)
-    print(user.first_name)
     u=UserProfile.objects.get_or_create(user=user)[0]
     u.display_name=user.first_name+user.last_name
     u.save()

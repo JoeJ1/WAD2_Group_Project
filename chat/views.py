@@ -7,7 +7,6 @@ from chat.models import Chat, File, UserProfile, Message, DjangoUser
 from chat.forms import ChangeUserDisplayName, FileForm, UserForm, UserProfileForm, ChatForm, ChangeUserProfilePic
 
 
-
 @login_required
 def search_profiles(request):
     context_dict = {}
@@ -48,10 +47,6 @@ def get_user_chats(request):
     except:
         context_dict['chats'] = None
     return context_dict
-
-@login_required
-def google_login(request):
-    return redirect(reverse('chat:chat')) 
 
 @login_required
 def members(request, chat_name_slug):
