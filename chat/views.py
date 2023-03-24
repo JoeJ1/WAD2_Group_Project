@@ -235,7 +235,7 @@ def sign_up(request):
         user_form = UserForm()
         profile_form = UserProfileForm()
 
-    return render(request,'chat/SignUp.html',
+    return render(request,'chat/signup.html',
                   context={'user_form':user_form,
                            'profile_form':profile_form,
                            'registered':registered}
